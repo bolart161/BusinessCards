@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68A0DBAFFC370898142A6D0C /* Pods_BusinessCards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66C1CF9D557473FC9464EEF7 /* Pods_BusinessCards.framework */; };
 		AC46C9C22264FB390049E653 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC46C9C12264FB390049E653 /* AppDelegate.swift */; };
 		AC46C9C42264FB390049E653 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC46C9C32264FB390049E653 /* ViewController.swift */; };
 		AC46C9C72264FB390049E653 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC46C9C52264FB390049E653 /* Main.storyboard */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		37A58B8C0743B5AB58051821 /* Pods-BusinessCards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusinessCards.release.xcconfig"; path = "Target Support Files/Pods-BusinessCards/Pods-BusinessCards.release.xcconfig"; sourceTree = "<group>"; };
+		66C1CF9D557473FC9464EEF7 /* Pods_BusinessCards.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusinessCards.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C08E609D1ED3F42079EA115 /* Pods-BusinessCards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusinessCards.debug.xcconfig"; path = "Target Support Files/Pods-BusinessCards/Pods-BusinessCards.debug.xcconfig"; sourceTree = "<group>"; };
 		AC46C9BE2264FB390049E653 /* BusinessCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BusinessCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC46C9C12264FB390049E653 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC46C9C32264FB390049E653 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68A0DBAFFC370898142A6D0C /* Pods_BusinessCards.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		58A9DE39D0C34DC72ADD64A6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				66C1CF9D557473FC9464EEF7 /* Pods_BusinessCards.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		89D3F38BF9894CB072AB002C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8C08E609D1ED3F42079EA115 /* Pods-BusinessCards.debug.xcconfig */,
+				37A58B8C0743B5AB58051821 /* Pods-BusinessCards.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		AC46C9B52264FB390049E653 = {
 			isa = PBXGroup;
 			children = (
 				AC46C9C02264FB390049E653 /* BusinessCards */,
 				AC46C9BF2264FB390049E653 /* Products */,
+				89D3F38BF9894CB072AB002C /* Pods */,
+				58A9DE39D0C34DC72ADD64A6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +78,54 @@
 		AC46C9C02264FB390049E653 /* BusinessCards */ = {
 			isa = PBXGroup;
 			children = (
-				AC46C9C12264FB390049E653 /* AppDelegate.swift */,
-				AC46C9C32264FB390049E653 /* ViewController.swift */,
-				AC46C9C52264FB390049E653 /* Main.storyboard */,
-				AC46C9C82264FB3B0049E653 /* Assets.xcassets */,
-				AC46C9CA2264FB3B0049E653 /* LaunchScreen.storyboard */,
-				AC46C9CD2264FB3B0049E653 /* Info.plist */,
+				F78B49AC22650A0E007B1873 /* Storyboards */,
+				F78B49AB22650A08007B1873 /* Controllers */,
+				F78B49AA22650A00007B1873 /* Services */,
+				F78B49A9226509FC007B1873 /* Models */,
+				F78B49A8226509ED007B1873 /* Resources */,
 			);
 			path = BusinessCards;
+			sourceTree = "<group>";
+		};
+		F78B49A8226509ED007B1873 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AC46C9CD2264FB3B0049E653 /* Info.plist */,
+				AC46C9C82264FB3B0049E653 /* Assets.xcassets */,
+				AC46C9C12264FB390049E653 /* AppDelegate.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F78B49A9226509FC007B1873 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F78B49AA22650A00007B1873 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F78B49AB22650A08007B1873 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AC46C9C32264FB390049E653 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F78B49AC22650A0E007B1873 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				AC46C9C52264FB390049E653 /* Main.storyboard */,
+				AC46C9CA2264FB3B0049E653 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +135,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AC46C9D02264FB3B0049E653 /* Build configuration list for PBXNativeTarget "BusinessCards" */;
 			buildPhases = (
+				B16761790B410B6147FE78D9 /* [CP] Check Pods Manifest.lock */,
 				AC46C9BA2264FB390049E653 /* Sources */,
 				AC46C9BB2264FB390049E653 /* Frameworks */,
 				AC46C9BC2264FB390049E653 /* Resources */,
+				4A43491CE0837B44E4B26C57 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,6 +195,55 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4A43491CE0837B44E4B26C57 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BusinessCards/Pods-BusinessCards-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BusinessCards/Pods-BusinessCards-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B16761790B410B6147FE78D9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BusinessCards-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AC46C9BA2264FB390049E653 /* Sources */ = {
@@ -280,11 +395,12 @@
 		};
 		AC46C9D12264FB3B0049E653 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C08E609D1ED3F42079EA115 /* Pods-BusinessCards.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7S5RDK7P3Q;
-				INFOPLIST_FILE = BusinessCards/Info.plist;
+				INFOPLIST_FILE = BusinessCards/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -298,11 +414,12 @@
 		};
 		AC46C9D22264FB3B0049E653 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37A58B8C0743B5AB58051821 /* Pods-BusinessCards.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7S5RDK7P3Q;
-				INFOPLIST_FILE = BusinessCards/Info.plist;
+				INFOPLIST_FILE = BusinessCards/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
