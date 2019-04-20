@@ -22,7 +22,7 @@ class CardRecord: Object {
     @objc dynamic var descriptionText: String?
     @objc dynamic var created = Date()
 
-    convenience init(name: String, surname: String, phone: String, isMy: Bool, category: CategoryRecord?, info: [String: String]? = nil) {
+    convenience init(name: String, surname: String, phone: String, isMy: Bool, category: CategoryRecord, info: [String: String]? = nil) {
         self.init()
         self.name = name
         self.surname = surname
