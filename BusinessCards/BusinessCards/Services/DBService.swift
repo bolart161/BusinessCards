@@ -37,10 +37,8 @@ class DBService<T: Object>: DBServiceProtocol {
         }
     }
 
-    func get(field: String, value: Any, sortBy: String? = nil, ascending: Bool = true) -> Results<T> {
-        // swiftlint:disable force_cast
-        let predicate = NSPredicate(format: "\(field) == [c]%@", value as! CVarArg)
-        // swiftlint:enable force_cast
+    func get(field: String, value: String, sortBy: String? = nil, ascending: Bool = true) -> Results<T> {
+        let predicate = NSPredicate(format: "\(field) == [c]%@", value)
         if let sortField = sortBy {
             return realm.objects(T.self).filter(predicate).sorted(byKeyPath: sortField, ascending: ascending)
         }
