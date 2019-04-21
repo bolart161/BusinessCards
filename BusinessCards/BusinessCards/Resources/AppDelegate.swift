@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +16,78 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let cards = DBService<CardRecord>() // cards BD
+        let categories = DBService<CategoryRecord>() // categories BD
+        
+        cards.deleteAll()
+        categories.deleteAll()
+        
+        // make some categories
+        let work = CategoryRecord(name: "Work")
+        let cocoaHeads = CategoryRecord(name: "CocoaHeads 2019")
+        let polytech = CategoryRecord(name: "Polytech")
+        
+        // make some cards
+        let alena = CardRecord(name: "Alena", surname: "Mordvintseva", phone: "89215521714", isMy: true, category: polytech)
+        // card with additional info
+        let artemInfo: [String: String] = [.email: "bolart161@mail.ru", .company: "DreamTeam"]
+        let artem = CardRecord(name: "Artem", surname: "Boltunov", phone: "89817521538", isMy: false, category: polytech, info: artemInfo)
+        // or
+        let sasha = CardRecord(name: "Sasha", surname: "Ponomarev", phone: "89995195882", isMy: false, category: cocoaHeads, info: [.address: "Купчино"])
+        let maxim = CardRecord(name: "Maxim", surname: "Egorov", phone: "89697298209", isMy: false, category: work, info: [.company: "Янино", .email: "egorov@mail.ru"])
+            
+        // add categories and cards
+        categories.add(work)
+        categories.add(cocoaHeads)
+        categories.add(polytech)
+        cards.add(alena)
+        cards.add(artem)
+        cards.add(sasha)
+        cards.add(maxim)
+        
+        // true -> native
+        let allCards = cards.getAll()
+        let peopleFromWork = cards.get(field: .category, value: work, sortBy: .name)
+        // return results (many records)
+        //print()
+        
+        // how to edit 
+        //cards.edit(data: artem, value: [.company: "Mail.ru Group", .phone: "89111111111"])
+        cards.edit(data: maxim, value: [.category: polytech])
+        
+        
+        print("!!!")
+        // при удалении категории удаляются все карты, с ней связанные
+        
+        var cardsWithWorkCategory = cards.get(field: .category, value: work)
+        print(cardsWithWorkCategory)
+        //categories.delete(cocoaHeads)
+        //cards.deleteAll()
+        let name = cards.get(field: .company, value: "DreamTeam")
+        cardsWithWorkCategory = cards.get(field: .category, value: work)
+        print(cardsWithWorkCategory)
+        
+        // избежать этого можно, заранее изменив CategoryRecord в карте
+        cards.edit(data: sasha, value: [.category: polytech])
+        print(cards.getAll())
+        
+        // deleteAll соответственно
+//        let artem = CardRecord(name: "Atem", surname: <#T##String#>, phone: <#T##String#>, isMy: <#T##Bool#>, category: <#T##CategoryRecord#>, info: <#T##[String : String]?#>)
+//        categories.add(CategoryRecord(name: "Work"))
+//        categories.add(CategoryRecord(name: "Partners"))
+//        categories.add(CategoryRecord(name: "Work"))
+//        db2.add(CategoryRecord(name: "Work"))
+//        db1.add(CardRecord(name: "Alena", surname: "Surname", phone: "89215521714", isMy: true, category: db2.get(field: .name, value: "Work").first!, info: [.company: "Polytech", .email: "my@mail.ru"]))
+//
+//        print(db1.getAll())
+//        print(db1.getAll(sortBy: .name, ascending: true))
+//
+////        db1.add(CardRecord(name: "Name", surname: "Surname", phone: "89215521714", isMy: true, category: db2.get(field: .name, value: "Work").first!, info: [.company: "Polytech", .email: "my@mail.ru"]))
+////        let record = db1.get(field: .name, value: "Alena").first!
+////        print(record)
+////        db1.edit(data: record, value: [.isMy: "Nope"])
+//        print(db1.getAll())
         return true
     }
 

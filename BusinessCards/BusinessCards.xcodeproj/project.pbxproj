@@ -13,6 +13,11 @@
 		AC46C9C72264FB390049E653 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC46C9C52264FB390049E653 /* Main.storyboard */; };
 		AC46C9C92264FB3B0049E653 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC46C9C82264FB3B0049E653 /* Assets.xcassets */; };
 		AC46C9CC2264FB3B0049E653 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC46C9CA2264FB3B0049E653 /* LaunchScreen.storyboard */; };
+		F74EBB5B2265E58400F13374 /* CardRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74EBB5A2265E58400F13374 /* CardRecord.swift */; };
+		F7BBEBD02268BD85004DEE76 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BBEBCF2268BD85004DEE76 /* String.swift */; };
+		F7CC828F22676A9600AFF7FA /* CategoryRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CC828E22676A9600AFF7FA /* CategoryRecord.swift */; };
+		F7CC829122676CBC00AFF7FA /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CC829022676CBC00AFF7FA /* DBService.swift */; };
+		F7CC829422677B7D00AFF7FA /* DBServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CC829322677B7D00AFF7FA /* DBServiceProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,11 @@
 		AC46C9C82264FB3B0049E653 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC46C9CB2264FB3B0049E653 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC46C9CD2264FB3B0049E653 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F74EBB5A2265E58400F13374 /* CardRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRecord.swift; sourceTree = "<group>"; };
+		F7BBEBCF2268BD85004DEE76 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		F7CC828E22676A9600AFF7FA /* CategoryRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRecord.swift; sourceTree = "<group>"; };
+		F7CC829022676CBC00AFF7FA /* DBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
+		F7CC829322677B7D00AFF7FA /* DBServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBServiceProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +88,7 @@
 		AC46C9C02264FB390049E653 /* BusinessCards */ = {
 			isa = PBXGroup;
 			children = (
+				F7BBEBCE2268BD79004DEE76 /* Extension */,
 				F78B49AC22650A0E007B1873 /* Storyboards */,
 				F78B49AB22650A08007B1873 /* Controllers */,
 				F78B49AA22650A00007B1873 /* Services */,
@@ -100,6 +111,8 @@
 		F78B49A9226509FC007B1873 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F74EBB5A2265E58400F13374 /* CardRecord.swift */,
+				F7CC828E22676A9600AFF7FA /* CategoryRecord.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -107,6 +120,8 @@
 		F78B49AA22650A00007B1873 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				F7CC829222677B6900AFF7FA /* Protocols */,
+				F7CC829022676CBC00AFF7FA /* DBService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -128,6 +143,22 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		F7BBEBCE2268BD79004DEE76 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F7BBEBCF2268BD85004DEE76 /* String.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		F7CC829222677B6900AFF7FA /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F7CC829322677B7D00AFF7FA /* DBServiceProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -140,6 +171,7 @@
 				AC46C9BB2264FB390049E653 /* Frameworks */,
 				AC46C9BC2264FB390049E653 /* Resources */,
 				4A43491CE0837B44E4B26C57 /* [CP] Embed Pods Frameworks */,
+				F7982E982268A0EF00A059FC /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -243,6 +275,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F7982E982268A0EF00A059FC /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -251,7 +301,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC46C9C42264FB390049E653 /* ViewController.swift in Sources */,
+				F7CC829122676CBC00AFF7FA /* DBService.swift in Sources */,
 				AC46C9C22264FB390049E653 /* AppDelegate.swift in Sources */,
+				F7CC829422677B7D00AFF7FA /* DBServiceProtocol.swift in Sources */,
+				F7BBEBD02268BD85004DEE76 /* String.swift in Sources */,
+				F74EBB5B2265E58400F13374 /* CardRecord.swift in Sources */,
+				F7CC828F22676A9600AFF7FA /* CategoryRecord.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
