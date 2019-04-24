@@ -13,6 +13,7 @@ extension String {
     static let isMy = "isMy"
     static let name = "name"
     static let surname = "surname"
+    static let middleName = "middleName"
     static let phone = "phone"
     static let company = "company"
     static let email = "email"
