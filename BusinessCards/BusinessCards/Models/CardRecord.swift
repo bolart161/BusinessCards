@@ -13,6 +13,7 @@ class CardRecord: Object {
     @objc dynamic var isMy = false
     @objc dynamic var name = ""
     @objc dynamic var surname = ""
+    @objc dynamic var middleName: String?
     @objc dynamic var phone = ""
     @objc dynamic var company: String?
     @objc dynamic var email: String?
