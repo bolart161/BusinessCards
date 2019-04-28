@@ -13,7 +13,6 @@
 		AC46C9C42264FB390049E653 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC46C9C32264FB390049E653 /* ViewController.swift */; };
 		AC46C9C72264FB390049E653 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC46C9C52264FB390049E653 /* Main.storyboard */; };
 		AC46C9CC2264FB3B0049E653 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC46C9CA2264FB3B0049E653 /* LaunchScreen.storyboard */; };
-<<<<<<< HEAD
 		AC8F8B47226B946B00EDD8E4 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F8B46226B946B00EDD8E4 /* String.swift */; };
 		AC8F8B4E226B947C00EDD8E4 /* ActionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F8B49226B947C00EDD8E4 /* ActionsTableViewController.swift */; };
 		AC8F8B4F226B947C00EDD8E4 /* ViewControllerDetailInformationAboutCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F8B4A226B947C00EDD8E4 /* ViewControllerDetailInformationAboutCard.swift */; };
@@ -24,13 +23,6 @@
 		AC8F8B59226B949300EDD8E4 /* CardRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F8B57226B949300EDD8E4 /* CardRecord.swift */; };
 		AC8F8B5A226B949300EDD8E4 /* CategoryRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F8B58226B949300EDD8E4 /* CategoryRecord.swift */; };
 		AC8F8B5C226B949F00EDD8E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC8F8B5B226B949F00EDD8E4 /* Assets.xcassets */; };
-=======
-		F7CB803C22703828004B5BAC /* DBServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CB803A22703828004B5BAC /* DBServiceProtocol.swift */; };
-		F7CB803D22703828004B5BAC /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CB803B22703828004B5BAC /* DBService.swift */; };
-		F7CB804022703845004B5BAC /* CategoryRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CB803E22703845004B5BAC /* CategoryRecord.swift */; };
-		F7CB804122703845004B5BAC /* CardRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CB803F22703845004B5BAC /* CardRecord.swift */; };
-		F7CB8044227038AE004B5BAC /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CB8043227038AE004B5BAC /* String.swift */; };
->>>>>>> 8bfc01a2711d50475d91bd3c50bd98812c9f1734
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,7 +36,6 @@
 		AC46C9C62264FB390049E653 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AC46C9CB2264FB3B0049E653 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC46C9CD2264FB3B0049E653 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		AC8F8B46226B946B00EDD8E4 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		AC8F8B49226B947C00EDD8E4 /* ActionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionsTableViewController.swift; sourceTree = "<group>"; };
 		AC8F8B4A226B947C00EDD8E4 /* ViewControllerDetailInformationAboutCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerDetailInformationAboutCard.swift; sourceTree = "<group>"; };
@@ -55,13 +46,6 @@
 		AC8F8B57226B949300EDD8E4 /* CardRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardRecord.swift; sourceTree = "<group>"; };
 		AC8F8B58226B949300EDD8E4 /* CategoryRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryRecord.swift; sourceTree = "<group>"; };
 		AC8F8B5B226B949F00EDD8E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-=======
-		F7CB803A22703828004B5BAC /* DBServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBServiceProtocol.swift; sourceTree = "<group>"; };
-		F7CB803B22703828004B5BAC /* DBService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
-		F7CB803E22703845004B5BAC /* CategoryRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryRecord.swift; sourceTree = "<group>"; };
-		F7CB803F22703845004B5BAC /* CardRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardRecord.swift; sourceTree = "<group>"; };
-		F7CB8043227038AE004B5BAC /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
->>>>>>> 8bfc01a2711d50475d91bd3c50bd98812c9f1734
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,11 +98,7 @@
 		AC46C9C02264FB390049E653 /* BusinessCards */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				AC8F8B45226B946B00EDD8E4 /* Extension */,
-=======
-				F7CB8042227038AE004B5BAC /* Extension */,
->>>>>>> 8bfc01a2711d50475d91bd3c50bd98812c9f1734
 				F78B49AC22650A0E007B1873 /* Storyboards */,
 				F78B49AB22650A08007B1873 /* Controllers */,
 				F78B49AA22650A00007B1873 /* Services */,
@@ -176,13 +156,8 @@
 		F78B49A9226509FC007B1873 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				AC8F8B57226B949300EDD8E4 /* CardRecord.swift */,
 				AC8F8B58226B949300EDD8E4 /* CategoryRecord.swift */,
-=======
-				F7CB803F22703845004B5BAC /* CardRecord.swift */,
-				F7CB803E22703845004B5BAC /* CategoryRecord.swift */,
->>>>>>> 8bfc01a2711d50475d91bd3c50bd98812c9f1734
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -190,13 +165,8 @@
 		F78B49AA22650A00007B1873 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				AC8F8B54226B948800EDD8E4 /* DBService.swift */,
 				AC8F8B52226B948800EDD8E4 /* Protocols */,
-=======
-				F7CB803B22703828004B5BAC /* DBService.swift */,
-				F7CB803922703828004B5BAC /* Protocols */,
->>>>>>> 8bfc01a2711d50475d91bd3c50bd98812c9f1734
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -218,22 +188,6 @@
 				AC46C9CA2264FB3B0049E653 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
-			sourceTree = "<group>";
-		};
-		F7CB803922703828004B5BAC /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				F7CB803A22703828004B5BAC /* DBServiceProtocol.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		F7CB8042227038AE004B5BAC /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				F7CB8043227038AE004B5BAC /* String.swift */,
-			);
-			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,16 +314,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
 				AC8F8B47226B946B00EDD8E4 /* String.swift in Sources */,
 				AC8F8B56226B948800EDD8E4 /* DBService.swift in Sources */,
-=======
-				F7CB803C22703828004B5BAC /* DBServiceProtocol.swift in Sources */,
-				F7CB804022703845004B5BAC /* CategoryRecord.swift in Sources */,
-				F7CB804122703845004B5BAC /* CardRecord.swift in Sources */,
-				F7CB803D22703828004B5BAC /* DBService.swift in Sources */,
-				F7CB8044227038AE004B5BAC /* String.swift in Sources */,
->>>>>>> 8bfc01a2711d50475d91bd3c50bd98812c9f1734
 				AC46C9C42264FB390049E653 /* ViewController.swift in Sources */,
 				AC8F8B4E226B947C00EDD8E4 /* ActionsTableViewController.swift in Sources */,
 				AC46C9C22264FB390049E653 /* AppDelegate.swift in Sources */,
