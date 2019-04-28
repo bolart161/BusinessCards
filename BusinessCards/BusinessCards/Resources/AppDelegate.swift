@@ -13,9 +13,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        window = UIWindow()
+        window?.backgroundColor = .white
+        window?.makeKeyAndVisible()
+        let storyboard = UIStoryboard(name: "DetailOfCard", bundle: nil)
+        
+        let detailOfCardViewController = storyboard.instantiateViewController(withIdentifier: "ViewControllerDetailInformationAboutCard") as! ViewControllerDetailInformationAboutCard
+        
+        let category = CategoryRecord(name: "Business")
+        let param = [
+            "company" : "BolArt inc.",
+            "email" : "tema161@ya.ru",
+        ]
+        detailOfCardViewController.cardRecord = CardRecord(name: "Artem", surname: "Boltunov", phone: "8-929-821-40-30", isMy: true, category: category, info: param)
+        	
+        let navigationController = UINavigationController(rootViewController: detailOfCardViewController)
+        window?.rootViewController = navigationController
         return true
     }
 
