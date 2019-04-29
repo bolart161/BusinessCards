@@ -6,8 +6,8 @@
 //  Copyright © 2019 Artem Boltunov. All rights reserved.
 //
 
-import RealmSwift
 import Foundation
+import RealmSwift
 
 class DBService<T: Object>: DBServiceProtocol {
     private var realm: Realm {
