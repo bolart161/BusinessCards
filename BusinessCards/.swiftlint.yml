@@ -21,6 +21,7 @@ opt_in_rules:
 - convenience_type
 - discouraged_object_literal
 - discouraged_optional_boolean
+- discouraged_optional_collection
 - dynamic_inline
 - empty_count
 - empty_string
