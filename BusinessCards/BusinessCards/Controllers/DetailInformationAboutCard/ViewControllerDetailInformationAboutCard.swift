@@ -9,17 +9,17 @@
 import UIKit
 
 class ViewControllerDetailInformationAboutCard: UIViewController, UITableViewDelegate {
-    @IBOutlet weak var cardView: CardView!
-    @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet private var cardView: CardView!
+    @IBOutlet private var tableView: UITableView!
+
     let identifier = "cellDataOfCard"
     var cardRecord = CardRecord()
 
     private enum CardTitles: Int, CaseIterable {
-        case Name = 0
-        case Surname, Phone, My, Category, Company, Email, Address, Website, Created, Description
+        case name = 0
+        case surname, middleName, phone, isMy, category, company, email, address, website, created, description
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -27,30 +27,29 @@ class ViewControllerDetailInformationAboutCard: UIViewController, UITableViewDel
         let shareButton = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: nil)
         navigationItem.rightBarButtonItems = [moreActionButton, shareButton]
         navigationItem.title = cardRecord.name + " " + cardRecord.surname
-        
-        cardView.setCard(name: cardRecord.name + " " + cardRecord.surname, phone: cardRecord.phone, company: cardRecord.company, imagePath: cardRecord.imagePath)
+
+        cardView.setCard(
+            name: cardRecord.name + " " + cardRecord.surname,
+            phone: cardRecord.phone,
+            company: cardRecord.company,
+            imagePath: cardRecord.imagePath
+        )
+
         cardView.layer.cornerRadius = 10
         cardView.layer.masksToBounds = true
     }
-    
-    @objc
-    private func tappedMore(){
-        guard let popVC = storyboard?.instantiateViewController(withIdentifier: "popVC") else { return }
+
+    @objc private func tappedMore() {
+        guard let popVC = storyboard?.instantiateViewController(withIdentifier: "popVC") as? ActionsTableViewController else { return }
         popVC.modalPresentationStyle = .popover
-        
+
         let popOverVC = popVC.popoverPresentationController
-        
+
         popOverVC?.delegate = self
         popOverVC?.barButtonItem = navigationItem.rightBarButtonItems?.first
+        popVC.card = cardRecord
         popVC.preferredContentSize = CGSize(width: 200, height: 150)
-        
         self.present(popVC, animated: true)
-        
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let actionTableView = segue.destination as? ActionsTableViewController else { return }
-        actionTableView.card = cardRecord
     }
 }
 
@@ -64,43 +63,57 @@ extension ViewControllerDetailInformationAboutCard: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 11
     }
-    
+    // swiftlint:disable:next function_body_length cyclomatic_complexity
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-        
+
         guard let cardTitle = CardTitles(rawValue: indexPath.row) else { return cell }
-        let value: String?
-        
+        let value, title: String?
+
         switch cardTitle {
-        case .Address:
+        case .address:
+            title = "Адрес:"
             value = self.cardRecord.address
-        case .Category:
+        case .category:
+            title = "Категория:"
             value = self.cardRecord.category?.name
-        case .Name:
+        case .middleName:
+            title = "Отчество:"
+            value = self.cardRecord.middleName
+        case .name:
+            title = "Имя:"
             value = self.cardRecord.name
-        case .Surname:
+        case .surname:
+            title = "Фамилия:"
             value = self.cardRecord.surname
-        case .Phone:
+        case .phone:
+            title = "Телефон:"
             value = self.cardRecord.phone
-        case .My:
-            value = self.cardRecord.isMy ? "Yes":"No"
-        case .Email:
+        case .isMy:
+            title = "Моя:"
+            value = self.cardRecord.isMy ? "Да":"Нет"
+        case .email:
+            title = "Почта:"
             value = self.cardRecord.email
-        case .Website:
+        case .website:
+            title = "Сайт:"
             value = self.cardRecord.website
-        case .Created:
+        case .created:
+            title = "Создана:"
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
-            
+
             let date = dateFormatter.string(from: self.cardRecord.created)
             value = date
-        case .Description:
+        case .description:
+            title = "Описание:"
             value = self.cardRecord.descriptionText
-        case .Company:
+        case .company:
+            title = "Компания:"
             value = self.cardRecord.company
         }
-        
-        cell.textLabel?.text = String(describing: cardTitle)
+
+        cell.textLabel?.text = title
         cell.detailTextLabel?.text = value
         return cell
     }

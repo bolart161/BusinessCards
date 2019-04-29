@@ -9,39 +9,53 @@
 import UIKit
 
 class ActionsTableViewController: UITableViewController {
+    // swiftlint:disable:next implicitly_unwrapped_optional
     var card: CardRecord!
     let cardsDB = DBService<CardRecord>()
     let array = ["Edit", "Remove", "Create notification"]
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let navigationController = self.presentingViewController as? UINavigationController
+
         switch indexPath.row {
         case 0: // Edit
-            print("Edit")
-            dismiss(animated: true)
+            // переход на экран Алены
+            //=================
+            //
+            //=================
+            self.dismiss(animated: true) {
+                _ = navigationController?.popViewController(animated: true)
+            }
             return
         case 1: // Remove
-            //  Alert with YES / Cancel
-            
-            // cardsDB.delete(card)
-            print("delete")
-            // Перейти на экран из которого был вызван экран детальной информации
+            let alert = UIAlertController(title: "Delete", message: "Delete this card?", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            alert.addAction(cancelAction)
+
+            let deleteAction = UIAlertAction(title: "Delete", style: .default) { _ in
+                self.cardsDB.delete(self.card)
+                self.dismiss(animated: true) {
+                    _ = navigationController?.popViewController(animated: true)
+                }
+            }
+            alert.addAction(deleteAction)
+            present(alert, animated: true)
             return
         case 2: // Create Notification
-            print("Create Notitfication")
             return
         default:
             return
         }
     }
-    
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return array.count
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = array[indexPath.row]

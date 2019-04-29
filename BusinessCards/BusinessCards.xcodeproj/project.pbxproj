@@ -202,6 +202,7 @@
 				AC46C9BB2264FB390049E653 /* Frameworks */,
 				AC46C9BC2264FB390049E653 /* Resources */,
 				4A43491CE0837B44E4B26C57 /* [CP] Embed Pods Frameworks */,
+				AC871EE0227780A60072E530 /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -284,6 +285,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BusinessCards/Pods-BusinessCards-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		AC871EE0227780A60072E530 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${PODS_ROOT}/SwiftLint/swiftlint\n";
 		};
 		B16761790B410B6147FE78D9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
