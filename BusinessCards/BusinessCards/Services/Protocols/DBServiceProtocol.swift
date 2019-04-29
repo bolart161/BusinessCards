@@ -6,8 +6,8 @@
 //  Copyright © 2019 Artem Boltunov. All rights reserved.
 //
 
-import RealmSwift
 import Foundation
+import RealmSwift
 
 protocol DBServiceProtocol {
     associatedtype ObjectType: Object
