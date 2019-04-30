@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller Detail Information About Card-->
+        <scene sceneID="Qsh-ge-R3g">
+            <objects>
+                <viewController storyboardIdentifier="ViewControllerDetailInformationAboutCard" id="LUl-Xf-aak" customClass="ViewControllerDetailInformationAboutCard" customModule="BusinessCards" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LXX-HD-tI2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Mpe-gF-Aww" customClass="CardView" customModule="BusinessCards" customModuleProvider="target">
+                                <rect key="frame" x="5" y="25" width="365" height="197"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Mpe-gF-Aww" secondAttribute="height" multiplier="64:27" constant="-101.96296296296293" id="FZZ-yU-Heu"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MlY-xf-pmA">
+                                <rect key="frame" x="5" y="227" width="365" height="396"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellDataOfCard" textLabel="zmy-HT-we6" detailTextLabel="1FQ-la-VvV" style="IBUITableViewCellStyleValue1" id="1dg-iJ-6gT">
+                                        <rect key="frame" x="0.0" y="28" width="365" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1dg-iJ-6gT" id="BIZ-MZ-01U">
+                                            <rect key="frame" x="0.0" y="0.0" width="365" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zmy-HT-we6">
+                                                    <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1FQ-la-VvV">
+                                                    <rect key="frame" x="306" y="12" width="44" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Mpe-gF-Aww" firstAttribute="top" secondItem="yxE-B6-WdN" secondAttribute="top" constant="5" id="IKt-jZ-lVj"/>
+                            <constraint firstItem="Mpe-gF-Aww" firstAttribute="trailing" secondItem="yxE-B6-WdN" secondAttribute="trailing" constant="-5" id="QMn-rs-Te9"/>
+                            <constraint firstItem="MlY-xf-pmA" firstAttribute="top" secondItem="Mpe-gF-Aww" secondAttribute="bottom" constant="5" id="Zs4-Xd-Cnn"/>
+                            <constraint firstItem="Mpe-gF-Aww" firstAttribute="leading" secondItem="yxE-B6-WdN" secondAttribute="leading" constant="5" id="aL1-BA-ZAP"/>
+                            <constraint firstItem="MlY-xf-pmA" firstAttribute="leading" secondItem="yxE-B6-WdN" secondAttribute="leading" constant="5" id="g3m-ks-rX8"/>
+                            <constraint firstItem="yxE-B6-WdN" firstAttribute="trailing" secondItem="MlY-xf-pmA" secondAttribute="trailing" constant="5" id="gtX-Ww-xlA"/>
+                            <constraint firstItem="yxE-B6-WdN" firstAttribute="bottom" secondItem="MlY-xf-pmA" secondAttribute="bottom" id="lgr-hh-Jv2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yxE-B6-WdN"/>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="cardView" destination="Mpe-gF-Aww" id="pZJ-vv-bp4"/>
+                        <outlet property="tableView" destination="MlY-xf-pmA" id="A1X-90-xPN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kya-Pu-epf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2.3999999999999999" y="-19.340329835082461"/>
+        </scene>
+        <!--Actions Table View Controller-->
+        <scene sceneID="MVp-FG-7Ly">
+            <objects>
+                <tableViewController storyboardIdentifier="popVC" id="nwa-oo-wdl" customClass="ActionsTableViewController" customModule="BusinessCards" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="976-he-ldy">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="150"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="F81-7i-gU4" rowHeight="50" style="IBUITableViewCellStyleDefault" id="zQA-3m-9gv">
+                                <rect key="frame" x="0.0" y="28" width="250" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zQA-3m-9gv" id="ezX-jP-1hm">
+                                    <rect key="frame" x="0.0" y="0.0" width="250" height="49.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="F81-7i-gU4">
+                                            <rect key="frame" x="16" y="0.0" width="218" height="49.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                            <color key="textColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="nwa-oo-wdl" id="ej1-fN-wuf"/>
+                            <outlet property="delegate" destination="nwa-oo-wdl" id="zYS-Xv-oYu"/>
+                        </connections>
+                    </tableView>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="250" height="150"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gA0-hx-Tmj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="590" y="-20"/>
+        </scene>
+    </scenes>
+</document>
