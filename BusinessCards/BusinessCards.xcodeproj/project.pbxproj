@@ -13,6 +13,11 @@
 		AC46C9C72264FB390049E653 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC46C9C52264FB390049E653 /* Main.storyboard */; };
 		AC46C9C92264FB3B0049E653 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC46C9C82264FB3B0049E653 /* Assets.xcassets */; };
 		AC46C9CC2264FB3B0049E653 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC46C9CA2264FB3B0049E653 /* LaunchScreen.storyboard */; };
+		F79474F42278F3E000F05D9B /* CreateAndEditCard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F79474F32278F3E000F05D9B /* CreateAndEditCard.storyboard */; };
+		F79474F62278F3EF00F05D9B /* CreateAndEditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79474F52278F3EE00F05D9B /* CreateAndEditCardViewController.swift */; };
+		F79474F82278F3FC00F05D9B /* DateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79474F72278F3FC00F05D9B /* DateService.swift */; };
+		F79474FA2278F40A00F05D9B /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79474F92278F40A00F05D9B /* ImageService.swift */; };
+		F79474FC2278F41900F05D9B /* ImageServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79474FB2278F41900F05D9B /* ImageServiceProtocol.swift */; };
 		F7CB803C22703828004B5BAC /* DBServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CB803A22703828004B5BAC /* DBServiceProtocol.swift */; };
 		F7CB803D22703828004B5BAC /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CB803B22703828004B5BAC /* DBService.swift */; };
 		F7CB804022703845004B5BAC /* CategoryRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CB803E22703845004B5BAC /* CategoryRecord.swift */; };
@@ -31,6 +36,11 @@
 		AC46C9C82264FB3B0049E653 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC46C9CB2264FB3B0049E653 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC46C9CD2264FB3B0049E653 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F79474F32278F3E000F05D9B /* CreateAndEditCard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateAndEditCard.storyboard; sourceTree = "<group>"; };
+		F79474F52278F3EE00F05D9B /* CreateAndEditCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAndEditCardViewController.swift; sourceTree = "<group>"; };
+		F79474F72278F3FC00F05D9B /* DateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateService.swift; sourceTree = "<group>"; };
+		F79474F92278F40A00F05D9B /* ImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		F79474FB2278F41900F05D9B /* ImageServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageServiceProtocol.swift; sourceTree = "<group>"; };
 		F7CB803A22703828004B5BAC /* DBServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBServiceProtocol.swift; sourceTree = "<group>"; };
 		F7CB803B22703828004B5BAC /* DBService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
 		F7CB803E22703845004B5BAC /* CategoryRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryRecord.swift; sourceTree = "<group>"; };
@@ -120,6 +130,8 @@
 		F78B49AA22650A00007B1873 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				F79474F92278F40A00F05D9B /* ImageService.swift */,
+				F79474F72278F3FC00F05D9B /* DateService.swift */,
 				F7CB803B22703828004B5BAC /* DBService.swift */,
 				F7CB803922703828004B5BAC /* Protocols */,
 			);
@@ -129,6 +141,7 @@
 		F78B49AB22650A08007B1873 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F79474F52278F3EE00F05D9B /* CreateAndEditCardViewController.swift */,
 				AC46C9C32264FB390049E653 /* ViewController.swift */,
 			);
 			path = Controllers;
@@ -137,6 +150,7 @@
 		F78B49AC22650A0E007B1873 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				F79474F32278F3E000F05D9B /* CreateAndEditCard.storyboard */,
 				AC46C9C52264FB390049E653 /* Main.storyboard */,
 				AC46C9CA2264FB3B0049E653 /* LaunchScreen.storyboard */,
 			);
@@ -146,6 +160,7 @@
 		F7CB803922703828004B5BAC /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				F79474FB2278F41900F05D9B /* ImageServiceProtocol.swift */,
 				F7CB803A22703828004B5BAC /* DBServiceProtocol.swift */,
 			);
 			path = Protocols;
@@ -221,6 +236,7 @@
 			files = (
 				AC46C9CC2264FB3B0049E653 /* LaunchScreen.storyboard in Resources */,
 				AC46C9C92264FB3B0049E653 /* Assets.xcassets in Resources */,
+				F79474F42278F3E000F05D9B /* CreateAndEditCard.storyboard in Resources */,
 				AC46C9C72264FB390049E653 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,12 +297,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F79474FC2278F41900F05D9B /* ImageServiceProtocol.swift in Sources */,
+				F79474F82278F3FC00F05D9B /* DateService.swift in Sources */,
 				F7CB803C22703828004B5BAC /* DBServiceProtocol.swift in Sources */,
 				F7CB804022703845004B5BAC /* CategoryRecord.swift in Sources */,
+				F79474FA2278F40A00F05D9B /* ImageService.swift in Sources */,
 				F7CB804122703845004B5BAC /* CardRecord.swift in Sources */,
 				F7CB803D22703828004B5BAC /* DBService.swift in Sources */,
 				F7CB8044227038AE004B5BAC /* String.swift in Sources */,
 				AC46C9C42264FB390049E653 /* ViewController.swift in Sources */,
+				F79474F62278F3EF00F05D9B /* CreateAndEditCardViewController.swift in Sources */,
 				AC46C9C22264FB390049E653 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,7 +455,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7S5RDK7P3Q;
+				DEVELOPMENT_TEAM = AP856KSRS2;
 				INFOPLIST_FILE = BusinessCards/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -454,7 +474,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7S5RDK7P3Q;
+				DEVELOPMENT_TEAM = AP856KSRS2;
 				INFOPLIST_FILE = BusinessCards/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
