@@ -149,9 +149,9 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
         view.endEditing(true)
     }
 
-    func setCardRecord(card: CardRecord, isMy: Bool) {
+    func setCardRecord(card: CardRecord) {
         self.card = card
-        print(card)
+        isMyFlag(isMy: card.isMy)
     }
 
     func isMyFlag(isMy: Bool) {

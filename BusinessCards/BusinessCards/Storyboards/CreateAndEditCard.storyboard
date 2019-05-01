@@ -312,7 +312,7 @@
                         <outlet property="addImageButtonOutlet" destination="X7A-KQ-omB" id="5Ug-co-5YT"/>
                         <outlet property="addressField" destination="Vq4-vX-nzv" id="Hfn-8o-lPM"/>
                         <outlet property="categoryField" destination="vlu-Ch-IJh" id="sa8-8y-n9E"/>
-                        <outlet property="companyField" destination="Vq4-vX-nzv" id="RXI-la-4jL"/>
+                        <outlet property="companyField" destination="yV0-yO-mi5" id="a2F-dZ-Xzw"/>
                         <outlet property="descriptionField" destination="LvO-Bk-pPw" id="tHR-SN-6y5"/>
                         <outlet property="emailField" destination="iff-YI-gD7" id="eWN-xf-lxs"/>
                         <outlet property="middleNameField" destination="AMI-fA-EEh" id="VRa-8w-zso"/>
@@ -329,6 +329,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AddImage" width="512" height="512"/>
+        <image name="AddImage" width="384" height="384"/>
     </resources>
 </document>

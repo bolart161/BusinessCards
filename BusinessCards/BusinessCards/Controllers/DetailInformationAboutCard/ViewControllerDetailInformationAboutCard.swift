@@ -61,7 +61,7 @@ extension ViewControllerDetailInformationAboutCard: UIPopoverPresentationControl
 
 extension ViewControllerDetailInformationAboutCard: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 11
+        return 12
     }
     // swiftlint:disable:next function_body_length cyclomatic_complexity
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

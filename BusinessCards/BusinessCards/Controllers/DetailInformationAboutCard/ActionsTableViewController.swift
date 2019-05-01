@@ -24,7 +24,16 @@ class ActionsTableViewController: UITableViewController {
             //
             //=================
             self.dismiss(animated: true) {
-                _ = navigationController?.popViewController(animated: true)
+                let window = UIWindow()
+                window.backgroundColor = .white
+                window.makeKeyAndVisible()
+                let storyboard = UIStoryboard(name: "CreateAndEditCard", bundle: nil)
+                let createAndEditCardViewController = storyboard.instantiateViewController(withIdentifier: "createAndEditViewControllerID")
+                    as? CreateAndEditCardViewController
+                createAndEditCardViewController?.setCardRecord(card: self.card)
+                if let createAndEditCardViewControllerPush = createAndEditCardViewController {
+                    navigationController?.pushViewController(createAndEditCardViewControllerPush, animated: true)
+                }
             }
             return
         case 1: // Remove
