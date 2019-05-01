@@ -6,6 +6,7 @@
 //  Copyright © 2019 Александр Пономарёв. All rights reserved.
 //
 
+import EventKit
 import UIKit
 
 class ActionsTableViewController: UITableViewController {
@@ -19,10 +20,6 @@ class ActionsTableViewController: UITableViewController {
 
         switch indexPath.row {
         case 0: // Edit
-            // переход на экран Алены
-            //=================
-            //
-            //=================
             self.dismiss(animated: true) {
                 let window = UIWindow()
                 window.backgroundColor = .white
@@ -37,23 +34,61 @@ class ActionsTableViewController: UITableViewController {
             }
             return
         case 1: // Remove
-            let alert = UIAlertController(title: "Delete", message: "Delete this card?", preferredStyle: .alert)
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-            alert.addAction(cancelAction)
-
-            let deleteAction = UIAlertAction(title: "Delete", style: .default) { _ in
-                self.cardsDB.delete(self.card)
-                self.dismiss(animated: true) {
-                    _ = navigationController?.popViewController(animated: true)
-                }
-            }
-            alert.addAction(deleteAction)
-            present(alert, animated: true)
+            deleteCard()
             return
         case 2: // Create Notification
+            addEventToCalendar()
             return
         default:
             return
+        }
+    }
+
+    private func deleteCard() {
+        let navigationController = self.presentingViewController as? UINavigationController
+        let alert = UIAlertController(title: "Delete", message: "Delete this card?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alert.addAction(cancelAction)
+
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+            self.cardsDB.delete(self.card)
+            self.dismiss(animated: true) {
+                _ = navigationController?.popViewController(animated: true)
+            }
+        }
+        alert.addAction(deleteAction)
+        present(alert, animated: true)
+    }
+
+    private func goToAppleCalendar(date: Date) {
+        DispatchQueue.main.async {
+            let interval = date.timeIntervalSinceReferenceDate
+            if let url = URL(string: "calshow:\(interval)") {
+                UIApplication.shared.open(url)
+            }
+        }
+    }
+    private func addEventToCalendar() {
+        let title = self.card.name + " "  + self.card.surname
+        let notes = title + "\n" + self.card.phone
+        let eventStore = EKEventStore()
+        eventStore.requestAccess(to: .event) { granted, error in
+            if (granted) && (error == nil) {
+                let event = EKEvent(eventStore: eventStore)
+                event.title = title
+                event.notes = notes
+                event.startDate = Date()
+                event.endDate = Date()
+                event.calendar = eventStore.defaultCalendarForNewEvents
+                do {
+                    try eventStore.save(event, span: .thisEvent)
+                    self.goToAppleCalendar(date: event.startDate)
+                } catch let error as NSError {
+                    print("Error 1: \(error)")
+                }
+            } else {
+                print("Error 2: \(String(describing: error))")
+            }
         }
     }
 

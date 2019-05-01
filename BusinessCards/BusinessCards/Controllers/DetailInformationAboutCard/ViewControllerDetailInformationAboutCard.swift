@@ -39,6 +39,18 @@ class ViewControllerDetailInformationAboutCard: UIViewController, UITableViewDel
         cardView.layer.masksToBounds = true
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        navigationItem.title = cardRecord.name + " " + cardRecord.surname
+        cardView.setCard(
+            name: cardRecord.name + " " + cardRecord.surname,
+            phone: cardRecord.phone,
+            company: cardRecord.company,
+            imagePath: cardRecord.imagePath
+        )
+        tableView.reloadData()
+    }
+
     @objc private func tappedMore() {
         guard let popVC = storyboard?.instantiateViewController(withIdentifier: "popVC") as? ActionsTableViewController else { return }
         popVC.modalPresentationStyle = .popover
