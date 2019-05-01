@@ -6,8 +6,8 @@
 //  Copyright © 2019 Artem Boltunov. All rights reserved.
 //
 
-import UIKit
 import Foundation
+import UIKit
 
 protocol ImageServiceProtocol {
     func save(image: UIImage) -> String

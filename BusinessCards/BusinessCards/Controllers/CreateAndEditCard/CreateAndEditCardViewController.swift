@@ -9,7 +9,7 @@
 import UIKit
 
 class CreateAndEditCardViewController: UIViewController, UINavigationControllerDelegate {
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet private var scrollView: UIScrollView!
     // neccessary fields
     @IBOutlet private var nameField: UITextField!
     @IBOutlet private var surnameField: UITextField!
@@ -92,33 +92,33 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
         createToolbar()
         makeTextViewBorders()
         fillInfo()
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(keyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
-    
-    @objc func keyboard(notification: Notification) {
+
+    @objc private func keyboard(notification: Notification) {
         let userInfo = notification.userInfo
         // swiftlint:disable:next force_cast
         let keyboardScreenEndFrame = (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
-        
+
         if notification.name == UIResponder.keyboardWillHideNotification {
             scrollView.contentInset = UIEdgeInsets.zero
         } else {
             scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
         }
-        
+
         scrollView.scrollIndicatorInsets = scrollView.contentInset
     }
 
-    func createCategoryPicker() {
+    private func createCategoryPicker() {
         let categoryPicker = UIPickerView()
         categoryPicker.delegate = self
         categoryField.inputView = categoryPicker
     }
 
-    func createToolbar() {
+    private func createToolbar() {
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
 
@@ -126,7 +126,7 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
 
         toolBar.setItems([doneButton], animated: false)
         toolBar.isUserInteractionEnabled = true
-        
+
         nameField.inputAccessoryView = toolBar
         surnameField.inputAccessoryView = toolBar
         phoneField.inputAccessoryView = toolBar
@@ -139,7 +139,7 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
         descriptionField.inputAccessoryView = toolBar
     }
 
-    func makeTextViewBorders() {
+    private func makeTextViewBorders() {
         let customLightGray = UIColor.lightGray.cgColor
         customLightGray.copy(alpha: 0.95)
         descriptionField.layer.borderColor = customLightGray
@@ -158,7 +158,7 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
         self.isMy = isMy
     }
 
-    func fillInfo() {
+    private func fillInfo() {
         guard let card = self.card else { return }
         nameField.text = card.name
         surnameField.text = card.surname
@@ -190,7 +190,7 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
         }
     }
 
-    func getInfo() -> [String: String] {
+    private func getInfo() -> [String: String] {
         var textInfo: [String: String] = [:]
         textInfo[.name] = nameField.text
         textInfo[.surname] = surnameField.text
