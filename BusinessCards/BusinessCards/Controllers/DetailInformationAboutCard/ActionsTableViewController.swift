@@ -70,7 +70,15 @@ class ActionsTableViewController: UITableViewController {
     }
     private func addEventToCalendar() {
         let title = self.card.name + " "  + self.card.surname
-        let notes = title + "\n" + self.card.phone
+        let name = "Имя: " + card.name + "\n"
+        let surname = "Фамилия: " + card.surname + "\n"
+        let middleName = "Отчество: " + (card.middleName ?? "") + "\n"
+        let phone = "Телефон: " + card.phone + "\n"
+        let company = "Компания: " + (card.company ?? "") + "\n"
+        let email = "Почта: " + (card.email ?? "") + "\n"
+        let address = "Адрес: " + (card.address ?? "") + "\n"
+        let website = "Сайт: " + (card.website ?? "") + "\n"
+        let notes = name + surname + middleName + phone + company + email + address + website
         let eventStore = EKEventStore()
         eventStore.requestAccess(to: .event) { granted, error in
             if (granted) && (error == nil) {

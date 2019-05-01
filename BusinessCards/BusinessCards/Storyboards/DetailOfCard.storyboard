@@ -78,6 +78,36 @@
             </objects>
             <point key="canvasLocation" x="-2.3999999999999999" y="-19.340329835082461"/>
         </scene>
+        <!--Image View Controller-->
+        <scene sceneID="dy8-p6-Arj">
+            <objects>
+                <viewController storyboardIdentifier="popQRCode" id="jUz-Gn-yrX" customClass="QRImageViewController" customModule="BusinessCards" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LMR-YS-wiE">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="50Y-kL-zTi">
+                                <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="50Y-kL-zTi" firstAttribute="bottom" secondItem="Mx2-cr-8mK" secondAttribute="bottom" id="Clb-TK-S5f"/>
+                            <constraint firstItem="50Y-kL-zTi" firstAttribute="top" secondItem="Mx2-cr-8mK" secondAttribute="top" id="RIb-f8-R6A"/>
+                            <constraint firstItem="50Y-kL-zTi" firstAttribute="leading" secondItem="Mx2-cr-8mK" secondAttribute="leading" id="sXd-6D-Uhq"/>
+                            <constraint firstItem="50Y-kL-zTi" firstAttribute="trailing" secondItem="Mx2-cr-8mK" secondAttribute="trailing" id="uSB-we-y4Z"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Mx2-cr-8mK"/>
+                    </view>
+                    <size key="freeformSize" width="250" height="250"/>
+                    <connections>
+                        <outlet property="imageView" destination="50Y-kL-zTi" id="47e-2T-cya"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="89M-gG-0Br" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="616" y="-362"/>
+        </scene>
         <!--Actions Table View Controller-->
         <scene sceneID="MVp-FG-7Ly">
             <objects>
@@ -115,7 +145,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gA0-hx-Tmj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="590" y="-20"/>
+            <point key="canvasLocation" x="616" y="-122"/>
         </scene>
     </scenes>
 </document>

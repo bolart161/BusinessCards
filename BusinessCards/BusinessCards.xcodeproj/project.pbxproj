@@ -17,6 +17,7 @@
 		AC8F8B4F226B947C00EDD8E4 /* ViewControllerDetailInformationAboutCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F8B4A226B947C00EDD8E4 /* ViewControllerDetailInformationAboutCard.swift */; };
 		AC8F8B50226B947C00EDD8E4 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F8B4C226B947C00EDD8E4 /* CardView.swift */; };
 		AC8F8B51226B947C00EDD8E4 /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC8F8B4D226B947C00EDD8E4 /* CardView.xib */; };
+		ACB0C5392279CA3400463D15 /* QRImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB0C5382279CA3400463D15 /* QRImageViewController.swift */; };
 		ACD8549822779DE200683591 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD8549722779DE200683591 /* String.swift */; };
 		ACD8549F22779E2F00683591 /* CategoryRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD8549D22779E2F00683591 /* CategoryRecord.swift */; };
 		ACD854A022779E2F00683591 /* CardRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD8549E22779E2F00683591 /* CardRecord.swift */; };
@@ -48,6 +49,7 @@
 		AC8F8B4A226B947C00EDD8E4 /* ViewControllerDetailInformationAboutCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerDetailInformationAboutCard.swift; sourceTree = "<group>"; };
 		AC8F8B4C226B947C00EDD8E4 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		AC8F8B4D226B947C00EDD8E4 /* CardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
+		ACB0C5382279CA3400463D15 /* QRImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRImageViewController.swift; sourceTree = "<group>"; };
 		ACD8549722779DE200683591 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		ACD8549D22779E2F00683591 /* CategoryRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryRecord.swift; sourceTree = "<group>"; };
 		ACD8549E22779E2F00683591 /* CardRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardRecord.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				AC8F8B49226B947C00EDD8E4 /* ActionsTableViewController.swift */,
 				AC8F8B4A226B947C00EDD8E4 /* ViewControllerDetailInformationAboutCard.swift */,
 				AC8F8B4B226B947C00EDD8E4 /* Сard */,
+				ACB0C5382279CA3400463D15 /* QRImageViewController.swift */,
 			);
 			path = DetailInformationAboutCard;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				F79474FC2278F41900F05D9B /* ImageServiceProtocol.swift in Sources */,
 				F79474F82278F3FC00F05D9B /* DateService.swift in Sources */,
 				F7CB803C22703828004B5BAC /* DBServiceProtocol.swift in Sources */,
+				ACB0C5392279CA3400463D15 /* QRImageViewController.swift in Sources */,
 				F7CB804022703845004B5BAC /* (null) in Sources */,
 				F79474FA2278F40A00F05D9B /* ImageService.swift in Sources */,
 				ACD854A022779E2F00683591 /* CardRecord.swift in Sources */,
