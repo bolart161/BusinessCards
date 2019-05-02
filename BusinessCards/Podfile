@@ -6,4 +6,6 @@ target 'BusinessCards' do
   use_frameworks!
   pod 'SwiftLint'
   pod 'RealmSwift'
+  pod 'Reusable'
+  pod 'Then'
 end
