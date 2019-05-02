@@ -27,6 +27,7 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
     private let categories = DBService<CategoryRecord>()
     private lazy var categoriesList = DBService<CategoryRecord>().getAll(sortBy: .name, ascending: true)
     private var card: CardRecord?
+    private var category: CategoryRecord?
     private var isMy: Bool = false
     private var imageWasChanged: Bool = false
 
@@ -172,7 +173,14 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
         self.isMy = isMy
     }
 
+    func setCategory(category: CategoryRecord) {
+        self.category = category
+    }
+
     private func fillInfo() {
+        if let category = self.category {
+            categoryField.text = category.name
+        }
         guard let card = self.card else { return }
         nameField.text = card.name
         surnameField.text = card.surname
