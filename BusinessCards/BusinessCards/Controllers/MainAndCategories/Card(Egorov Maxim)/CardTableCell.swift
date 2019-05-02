@@ -10,5 +10,5 @@ import Reusable
 import UIKit
 
 class CardTableCell: UITableViewCell, NibReusable {
-    @IBOutlet var categoryLabel: UILabel!
+    @IBOutlet private var categoryLabel: UILabel!
 }

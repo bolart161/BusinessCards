@@ -24,17 +24,8 @@ class ViewControllerDetailInformationAboutCard: UIViewController, UITableViewDel
         super.viewDidLoad()
         tableView.dataSource = self
         let moreActionButton = UIBarButtonItem(title: "...", style: .plain, target: self, action: #selector(tappedMore))
-        let shareButton = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: nil)
+        let shareButton = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(createQRCode))
         navigationItem.rightBarButtonItems = [moreActionButton, shareButton]
-        navigationItem.title = cardRecord.name + " " + cardRecord.surname
-
-        cardView.setCard(
-            name: cardRecord.name + " " + cardRecord.surname,
-            phone: cardRecord.phone,
-            company: cardRecord.company,
-            imagePath: cardRecord.imagePath
-        )
-
         cardView.layer.cornerRadius = 10
         cardView.layer.masksToBounds = true
     }
@@ -51,8 +42,43 @@ class ViewControllerDetailInformationAboutCard: UIViewController, UITableViewDel
         tableView.reloadData()
     }
 
+    @objc private func createQRCode() {
+        let name = "name: " + cardRecord.name + "\n"
+        let surname = "surname: " + cardRecord.surname + "\n"
+        let middleName = "middleName: " + (cardRecord.middleName ?? "") + "\n"
+        let phone = "phone: " + cardRecord.phone + "\n"
+        let company = "company: " + (cardRecord.company ?? "") + "\n"
+        let email = "email: " + (cardRecord.email ?? "") + "\n"
+        let address = "address: " + (cardRecord.address ?? "") + "\n"
+        let website = "website: " + (cardRecord.website ?? "") + "\n"
+        let stringForQR = name + surname + middleName + phone + company + email + address + website
+        let data = stringForQR.data(using: String.Encoding.ascii)
+        guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else { return }
+        qrFilter.setValue(data, forKey: "inputMessage")
+
+        guard let qrImage = qrFilter.outputImage else { return }
+        let transform = CGAffineTransform(scaleX: 30, y: 30)
+        let scaledQrImage = qrImage.transformed(by: transform)
+
+        let context = CIContext()
+        guard let cgImage = context.createCGImage(scaledQrImage, from: scaledQrImage.extent) else { return }
+        let processedImage = UIImage(cgImage: cgImage)
+
+        guard let popQRCode = storyboard?.instantiateViewController(withIdentifier: "popQRCode") as? QRImageViewController else { return }
+        popQRCode.modalPresentationStyle = .popover
+
+        let popOverVC = popQRCode.popoverPresentationController
+
+        popOverVC?.delegate = self
+        popOverVC?.barButtonItem = navigationItem.rightBarButtonItems?.last
+
+        popQRCode.setImage(imageQR: processedImage)
+        popQRCode.preferredContentSize = CGSize(width: 200, height: 200)
+        self.present(popQRCode, animated: true)
+    }
+
     @objc private func tappedMore() {
-        guard let popVC = storyboard?.instantiateViewController(withIdentifier: "popVC") as? ActionsTableViewController else { return }
+        guard let popVC = storyboard?.instantiateViewController(withIdentifier: "popVC") as? ActionsTableViewControllerAboutCard else { return }
         popVC.modalPresentationStyle = .popover
 
         let popOverVC = popVC.popoverPresentationController
@@ -60,7 +86,7 @@ class ViewControllerDetailInformationAboutCard: UIViewController, UITableViewDel
         popOverVC?.delegate = self
         popOverVC?.barButtonItem = navigationItem.rightBarButtonItems?.first
         popVC.card = cardRecord
-        popVC.preferredContentSize = CGSize(width: 200, height: 150)
+        popVC.preferredContentSize = CGSize(width: 250, height: 150)
         self.present(popVC, animated: true)
     }
 }

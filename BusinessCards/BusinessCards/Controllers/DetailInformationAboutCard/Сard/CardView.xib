@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -42,7 +41,7 @@
                     <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Company name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdf-Pz-z34">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdf-Pz-z34">
                     <rect key="frame" x="15" y="130" width="142" height="23"/>
                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
                     <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -52,7 +51,8 @@
             <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="hdf-Pz-z34" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="6LV-0o-otX"/>
-                <constraint firstItem="hdf-Pz-z34" firstAttribute="top" secondItem="qeo-9s-pdY" secondAttribute="bottom" constant="8" id="TCk-XN-4nn"/>
+                <constraint firstItem="hdf-Pz-z34" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="Fev-x1-RlW"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="hdf-Pz-z34" secondAttribute="bottom" constant="27" id="bO3-0o-UAs"/>
                 <constraint firstItem="E5i-1g-N7R" firstAttribute="leading" secondItem="qeo-9s-pdY" secondAttribute="trailing" constant="65" id="cho-YU-LnF"/>
                 <constraint firstItem="qeo-9s-pdY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="csm-6w-wdk"/>
                 <constraint firstItem="qeo-9s-pdY" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="dhg-FD-3ra"/>

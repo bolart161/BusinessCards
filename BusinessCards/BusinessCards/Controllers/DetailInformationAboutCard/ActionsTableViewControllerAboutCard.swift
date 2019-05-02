@@ -9,11 +9,11 @@
 import EventKit
 import UIKit
 
-class ActionsTableViewController: UITableViewController {
+class ActionsTableViewControllerAboutCard: UITableViewController {
     // swiftlint:disable:next implicitly_unwrapped_optional
     var card: CardRecord!
     let cardsDB = DBService<CardRecord>()
-    let array = ["Edit", "Remove", "Create notification"]
+    let array = ["Редактировать", "Удалить", "Добавить в календарь"]
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let navigationController = self.presentingViewController as? UINavigationController
@@ -46,11 +46,11 @@ class ActionsTableViewController: UITableViewController {
 
     private func deleteCard() {
         let navigationController = self.presentingViewController as? UINavigationController
-        let alert = UIAlertController(title: "Delete", message: "Delete this card?", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let alert = UIAlertController(title: "Удалить", message: "Удалить эту карту?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
         alert.addAction(cancelAction)
 
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+        let deleteAction = UIAlertAction(title: "Удалить", style: .destructive) { _ in
             self.cardsDB.delete(self.card)
             self.dismiss(animated: true) {
                 _ = navigationController?.popViewController(animated: true)

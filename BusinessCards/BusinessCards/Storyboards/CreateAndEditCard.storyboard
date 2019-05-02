@@ -327,6 +327,44 @@
             </objects>
             <point key="canvasLocation" x="75.9375" y="160"/>
         </scene>
+        <!--Actions Table View Controller Create And Edit-->
+        <scene sceneID="9Q6-73-Pcm">
+            <objects>
+                <tableViewController storyboardIdentifier="popVCEditAndCreateView" id="xJI-Jw-Vxl" customClass="ActionsTableViewControllerCreateAndEdit" customModule="BusinessCards" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="YLj-Hp-PK6">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="100"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="GeJ-be-I9i" style="IBUITableViewCellStyleDefault" id="6yv-ms-Cb2">
+                                <rect key="frame" x="0.0" y="28" width="250" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6yv-ms-Cb2" id="Kdd-K2-MAq">
+                                    <rect key="frame" x="0.0" y="0.0" width="250" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GeJ-be-I9i">
+                                            <rect key="frame" x="16" y="0.0" width="218" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                            <color key="textColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="xJI-Jw-Vxl" id="atj-fA-7ce"/>
+                            <outlet property="delegate" destination="xJI-Jw-Vxl" id="T2U-a9-JzE"/>
+                        </connections>
+                    </tableView>
+                    <size key="freeformSize" width="250" height="100"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9x3-kT-hIL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="847" y="-265"/>
+        </scene>
     </scenes>
     <resources>
         <image name="AddImage" width="384" height="384"/>

@@ -92,9 +92,23 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
         createToolbar()
         makeTextViewBorders()
         fillInfo()
-
+        let moreActionButton = UIBarButtonItem(title: "...", style: .plain, target: self, action: #selector(tappedMore))
+        navigationItem.rightBarButtonItem = moreActionButton
         NotificationCenter.default.addObserver(self, selector: #selector(keyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+
+    @objc private func tappedMore() {
+        guard let popVC = storyboard?.instantiateViewController(withIdentifier: "popVCEditAndCreateView")
+            as? ActionsTableViewControllerCreateAndEdit else { return }
+        popVC.modalPresentationStyle = .popover
+
+        let popOverVC = popVC.popoverPresentationController
+
+        popOverVC?.delegate = self
+        popOverVC?.barButtonItem = navigationItem.rightBarButtonItems?.first
+        popVC.preferredContentSize = CGSize(width: 200, height: 100)
+        self.present(popVC, animated: true)
     }
 
     @objc private func keyboard(notification: Notification) {
@@ -249,5 +263,11 @@ extension CreateAndEditCardViewController: UIImagePickerControllerDelegate {
         }
 
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension CreateAndEditCardViewController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
 }
