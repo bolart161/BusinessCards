@@ -47,6 +47,27 @@ class DBService<T: Object>: DBServiceProtocol {
         return realm.objects(T.self).filter(predicate)
     }
 
+    func get(field: String, contains: String, sortBy: String? = nil, ascending: Bool = true) -> Results<T> {
+        var fields: [String]
+        if T.self == CardRecord.self {
+            fields = [.name, .surname, .middleName, .phone, .company, .email, .address, .website, .descriptionText]
+        } else if T.self == CategoryRecord.self {
+            fields = [.name]
+        } else {
+            fatalError("Wrong object type")
+        }
+
+        let subpredicates = fields.map { property in
+            return NSPredicate(format: "%K CONTAINS[c] %@", property, contains)
+        }
+        let predicate = NSCompoundPredicate(orPredicateWithSubpredicates: subpredicates)
+
+        if let sortField = sortBy {
+            return realm.objects(T.self).filter(predicate).sorted(byKeyPath: sortField, ascending: ascending)
+        }
+        return realm.objects(T.self).filter(predicate)
+    }
+
     func getAll(sortBy: String? = nil, ascending: Bool = true) -> Results<T> {
         if let sortField = sortBy {
             return self.realm.objects(T.self).sorted(byKeyPath: sortField, ascending: ascending)
