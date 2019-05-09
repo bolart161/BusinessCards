@@ -58,6 +58,7 @@ class DBService<T: Object>: DBServiceProtocol {
         }
 
         let subpredicates = fields.map { property in
+            // swiftlint:disable:next implicit_return superfluous_disable_command
             return NSPredicate(format: "%K CONTAINS[c] %@", property, contains)
         }
         let predicate = NSCompoundPredicate(orPredicateWithSubpredicates: subpredicates)

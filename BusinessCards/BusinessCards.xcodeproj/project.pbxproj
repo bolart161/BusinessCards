@@ -21,6 +21,8 @@
 		AC8F8B4F226B947C00EDD8E4 /* ViewControllerDetailInformationAboutCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F8B4A226B947C00EDD8E4 /* ViewControllerDetailInformationAboutCard.swift */; };
 		AC8F8B50226B947C00EDD8E4 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F8B4C226B947C00EDD8E4 /* CardView.swift */; };
 		AC8F8B51226B947C00EDD8E4 /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC8F8B4D226B947C00EDD8E4 /* CardView.xib */; };
+		ACAC35F622840E6400D0948E /* MainAndCategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAC35F422840E6400D0948E /* MainAndCategoriesViewModel.swift */; };
+		ACAC35F722840E6400D0948E /* UserHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACAC35F522840E6400D0948E /* UserHeaderTableViewCell.xib */; };
 		ACB0C5392279CA3400463D15 /* QRImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB0C5382279CA3400463D15 /* QRImageViewController.swift */; };
 		ACD8549822779DE200683591 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD8549722779DE200683591 /* String.swift */; };
 		ACD8549F22779E2F00683591 /* CategoryRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD8549D22779E2F00683591 /* CategoryRecord.swift */; };
@@ -57,6 +59,8 @@
 		AC8F8B4A226B947C00EDD8E4 /* ViewControllerDetailInformationAboutCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerDetailInformationAboutCard.swift; sourceTree = "<group>"; };
 		AC8F8B4C226B947C00EDD8E4 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		AC8F8B4D226B947C00EDD8E4 /* CardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
+		ACAC35F422840E6400D0948E /* MainAndCategoriesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAndCategoriesViewModel.swift; sourceTree = "<group>"; };
+		ACAC35F522840E6400D0948E /* UserHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		ACB0C5382279CA3400463D15 /* QRImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRImageViewController.swift; sourceTree = "<group>"; };
 		ACD8549722779DE200683591 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		ACD8549D22779E2F00683591 /* CategoryRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryRecord.swift; sourceTree = "<group>"; };
@@ -103,6 +107,7 @@
 		941F3561227AFA9000BEB749 /* Card(Egorov Maxim) */ = {
 			isa = PBXGroup;
 			children = (
+				ACAC35F522840E6400D0948E /* UserHeaderTableViewCell.xib */,
 				941F3562227AFA9000BEB749 /* CardTableCell.swift */,
 				941F3563227AFA9000BEB749 /* CardTableCell.xib */,
 				941F3564227AFA9000BEB749 /* UserHeaderTableViewCell.swift */,
@@ -147,6 +152,7 @@
 			children = (
 				941F3561227AFA9000BEB749 /* Card(Egorov Maxim) */,
 				AC46C9C32264FB390049E653 /* MainAndCategoriesViewController.swift */,
+				ACAC35F422840E6400D0948E /* MainAndCategoriesViewModel.swift */,
 			);
 			path = MainAndCategories;
 			sourceTree = "<group>";
@@ -323,6 +329,7 @@
 				ACD854A32277A2ED00683591 /* Assets.xcassets in Resources */,
 				AC46C9C72264FB390049E653 /* Main.storyboard in Resources */,
 				941F3566227AFD8100BEB749 /* CardTableCell.xib in Resources */,
+				ACAC35F722840E6400D0948E /* UserHeaderTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +425,7 @@
 				F7CB803D22703828004B5BAC /* DBService.swift in Sources */,
 				F7CB8044227038AE004B5BAC /* (null) in Sources */,
 				AC46C9C42264FB390049E653 /* MainAndCategoriesViewController.swift in Sources */,
+				ACAC35F622840E6400D0948E /* MainAndCategoriesViewModel.swift in Sources */,
 				F79474F62278F3EF00F05D9B /* CreateAndEditCardViewController.swift in Sources */,
 				AC46C9C22264FB390049E653 /* AppDelegate.swift in Sources */,
 				ACD8549F22779E2F00683591 /* CategoryRecord.swift in Sources */,

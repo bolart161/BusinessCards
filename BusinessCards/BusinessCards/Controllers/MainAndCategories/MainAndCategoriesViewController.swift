@@ -13,33 +13,36 @@ import UIKit
 
 class MainAndCategoriesViewController: UIViewController {
     @IBOutlet private var tableView: UITableView!
+    // swiftlint:disable:next implicitly_unwrapped_optional
     var viewModelOfCards: MainAndCategoriesViewModel<CardRecord>!
+    // swiftlint:disable:next implicitly_unwrapped_optional
     var viewModelOfCategories: MainAndCategoriesViewModel<CategoryRecord>!
-    private var items: [CategoryRecord : Results<CardRecord>] = [:] {
+
+    private var items: [CategoryRecord: Results<CardRecord>] = [:] {
         didSet {
             self.tableView.reloadData()
         }
     }
-    
+
     var cardAdded: ((CategoryRecord) -> Void)?
     private lazy var oldItems = items
     var openedSections: [Int: Bool] = [:]
-    
+
     let search = UISearchController(searchResultsController: nil)
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.fillTableView()
         search.searchResultsUpdater = self
         search.obscuresBackgroundDuringPresentation = false
-        search.searchBar.placeholder = "wdewde"
+        search.searchBar.placeholder = "Search..."
         self.navigationItem.searchController = search
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAlertToAddCategory))
         viewModelOfCategories.onCardsChanged = {
-            guard let key = $0.last else {return}
+            guard let key = $0.last else { return }
             self.items[key] = self.viewModelOfCards.get(field: .category, value: key)
         }
-        
+
         tableView.do {
             $0.register(cellType: CardTableCell.self)
             $0.register(UserHeaderTableViewCell.self, forHeaderFooterViewReuseIdentifier: "header")
@@ -54,7 +57,7 @@ private extension MainAndCategoriesViewController {
         }
         return false
     }
-    
+
     private func changeSectionStatus(_ section: Int) {
         if let status = openedSections[section] {
             openedSections[section] = !status
@@ -63,12 +66,12 @@ private extension MainAndCategoriesViewController {
         }
         tableView.reloadSections([section], with: .fade)
     }
-    
+
     private func addCard(card: CardRecord) {
         viewModelOfCards.add(card)
         tableView.reloadData()
     }
-    
+
     @objc func showAlertToAddCategory() {
         let alert = UIAlertController(title: "Add category", message: "", preferredStyle: .alert)
         alert.addTextField { textField in
@@ -83,21 +86,21 @@ private extension MainAndCategoriesViewController {
         alert.addAction(addAction)
         present(alert, animated: true)
     }
-    
+
     private func addCategory(categoryName: String) {
         guard !categoryName.isEmpty else {
             return
         }
         let category = CategoryRecord(name: categoryName)
-        guard !(items.keys.contains{category.name == $0.name}) else {
+        guard !(items.keys.contains { category.name == $0.name }) else {
             return
         }
         viewModelOfCategories.add(category)
     }
-    
+
     private func fillTableView() {
-        for i in viewModelOfCategories.getAll(sotrBy: "name") {
-            items[i] = viewModelOfCards.get(field: .category, value: i)
+        for item in viewModelOfCategories.getAll(sotrBy: .name) {
+            items[item] = viewModelOfCards.get(field: .category, value: item)
         }
     }
 }
@@ -105,15 +108,15 @@ private extension MainAndCategoriesViewController {
 extension MainAndCategoriesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var key = [CategoryRecord](items.keys)
-        key = key.sorted{$0.name > $1.name}
-        let count = viewModelOfCards.get(field: .category, value: key[section]).count
+        key = key.sorted { $0.name > $1.name }
+        let categories = viewModelOfCards.get(field: .category, value: key[section])
         guard isSectionOpened(section) else {
-            guard count == 0 else {
+            guard categories.isEmpty else {
                 return 1
             }
             return 0
         }
-        return count
+        return categories.count
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -123,10 +126,10 @@ extension MainAndCategoriesViewController: UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: CardTableCell = tableView.dequeueReusableCell(for: indexPath)
         var key = [CategoryRecord](items.keys)
-        key = key.sorted{$0.name > $1.name}
+        key = key.sorted { $0.name > $1.name }
         let category = key[indexPath.section]
         let cards = viewModelOfCards.get(field: .category, value: category)
-        cell.configureCell(nameLabel: cards[indexPath.row].name, numberLabel: cards[indexPath.row].phone, companyLabel: cards[indexPath.row].company ?? "")
+        cell.configureCell(card: cards[indexPath.row])
         return cell
     }
 
@@ -134,13 +137,12 @@ extension MainAndCategoriesViewController: UITableViewDelegate, UITableViewDataS
         if let header = view as? UITableViewHeaderFooterView {
             header.backgroundView?.backgroundColor = UIColor.blue
             header.textLabel?.textColor = UIColor.white
-            
         }
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var key = [CategoryRecord](items.keys)
-        key = key.sorted{$0.name > $1.name}
+        key = key.sorted { $0.name > $1.name }
         return key[section].name
     }
 
@@ -149,24 +151,27 @@ extension MainAndCategoriesViewController: UITableViewDelegate, UITableViewDataS
         header?.tapHandler = { [unowned self] _ in
             self.changeSectionStatus(section)
         }
-        
+
         header?.longTapHandler = { [unowned self] _ in
             var key = [CategoryRecord](self.items.keys)
-            key = key.sorted{$0.name > $1.name}
+            key = key.sorted { $0.name > $1.name }
             let alert = UIAlertController(title: key[section].name, message: "", preferredStyle: .alert)
-            let addCardAction = UIAlertAction(title: "Add card", style: .default, handler: { _ in
+            let addCardAction = UIAlertAction(title: "Add card", style: .default) { _ in
                 let createStoryboard = UIStoryboard(name: "CreateAndEditCard", bundle: nil)
-                let createAndEditCardViewController = createStoryboard.instantiateViewController(withIdentifier: "createAndEditViewControllerID") as! CreateAndEditCardViewController
-                self.navigationController?.pushViewController(createAndEditCardViewController, animated: true)
+                let createAndEditCardViewController = createStoryboard.instantiateViewController(withIdentifier: "createAndEditViewControllerID")
+                    as? CreateAndEditCardViewController
+                guard let pCreateAndEditCardViewController = createAndEditCardViewController else { return }
+                pCreateAndEditCardViewController.setCategory(category: key[section])
+                self.navigationController?.pushViewController(pCreateAndEditCardViewController, animated: true)
                 self.tableView.reloadSections([section], with: .automatic)
-            })
-            let deleteAction = UIAlertAction(title: "Delete category", style: .default, handler: { _ in
-                var key = [CategoryRecord](self.items.keys)
+            }
+            let deleteAction = UIAlertAction(title: "Delete category", style: .default) { _ in
                 self.viewModelOfCategories.delete(data: key[section])
+                // swiftlint:disable:next force_unwrapping
                 self.items.remove(at: self.items.index(forKey: key[section])!)
                 self.tableView.reloadData()
                 print(self.viewModelOfCategories.getAll(sotrBy: "name"))
-            })
+            }
             alert.addAction(addCardAction)
             alert.addAction(deleteAction)
             self.present(alert, animated: true)
@@ -174,23 +179,25 @@ extension MainAndCategoriesViewController: UITableViewDelegate, UITableViewDataS
         }
         return header
     }
-    
+
     func tableView(_ tableView: UITableView, didEndDisplayingHeaderView view: UIView, forSection section: Int) {
         if let header = view as? UITableViewHeaderFooterView {
             header.backgroundView?.backgroundColor = UIColor.white
             header.textLabel?.textColor = UIColor.white
         }
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let mainStoryboard = UIStoryboard(name: "DetailOfCard", bundle: nil)
-        let viewControllerDetailInformationAboutCard = mainStoryboard.instantiateViewController(withIdentifier: "ViewControllerDetailInformationAboutCard") as! ViewControllerDetailInformationAboutCard
-        navigationController?.pushViewController(viewControllerDetailInformationAboutCard, animated: true)
+        let viewControllerDetailInformationAboutCard = mainStoryboard.instantiateViewController(withIdentifier: "ViewControllerDetailInformationAboutCard")
+            as? ViewControllerDetailInformationAboutCard
         var key = [CategoryRecord](items.keys)
-        key = key.sorted{$0.name > $1.name}
+        key = key.sorted { $0.name > $1.name }
         let category = key[indexPath.section]
         let cards = viewModelOfCards.get(field: .category, value: category)
-        viewControllerDetailInformationAboutCard.cardRecord = cards[indexPath.row]
+        viewControllerDetailInformationAboutCard?.cardRecord = cards[indexPath.row]
+        guard let pViewControllerDetailInformation = viewControllerDetailInformationAboutCard else { return }
+        navigationController?.pushViewController(pViewControllerDetailInformation, animated: true)
     }
 }
 

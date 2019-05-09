@@ -12,8 +12,9 @@ class UserHeaderTableViewCell: UITableViewHeaderFooterView {
     var didTapped = false
     // swiftlint:disable:next implicitly_unwrapped_optional
     var tapHandler: ((UserHeaderTableViewCell) -> Void)!
+    // swiftlint:disable:next implicitly_unwrapped_optional
     var longTapHandler: ((UserHeaderTableViewCell) -> Void)!
-    
+
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapAction)))
@@ -23,7 +24,7 @@ class UserHeaderTableViewCell: UITableViewHeaderFooterView {
     @objc private func tapAction() {
         tapHandler?(self)
     }
-    
+
     @objc private func longTapAction() {
         longTapHandler?(self)
     }

@@ -26,19 +26,12 @@ class ViewControllerDetailInformationAboutCard: UIViewController, UITableViewDel
         let moreActionButton = UIBarButtonItem(title: "...", style: .plain, target: self, action: #selector(tappedMore))
         let shareButton = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(createQRCode))
         navigationItem.rightBarButtonItems = [moreActionButton, shareButton]
-        cardView.layer.cornerRadius = 10
-        cardView.layer.masksToBounds = true
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         navigationItem.title = cardRecord.name + " " + cardRecord.surname
-        cardView.setCard(
-            name: cardRecord.name + " " + cardRecord.surname,
-            phone: cardRecord.phone,
-            company: cardRecord.company,
-            imagePath: cardRecord.imagePath
-        )
+        cardView.setCard(card: cardRecord)
         tableView.reloadData()
     }
 

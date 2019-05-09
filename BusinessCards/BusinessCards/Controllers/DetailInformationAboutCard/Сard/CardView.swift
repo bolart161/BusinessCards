@@ -32,23 +32,18 @@ class CardView: UIView {
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
 
-    func setCard(name: String, phone: String, company: String?, imagePath: String? = nil) {
-        var image: UIImage?
-        nameLabel.text = name
-        phoneLabel.text = phone
-        companyLabel.text = company ?? ""
+    func setCard(card: CardRecord) {
+        nameLabel.text = card.name + " " + card.surname
+        phoneLabel.text = card.phone
+        companyLabel.text = card.company ?? ""
 
-        let fileManager = FileManager.default
-        guard let imagePath = imagePath else {
+        guard let imagePath = card.imagePath else {
             // swiftlint:disable:next discouraged_object_literal
             imageView.image = #imageLiteral(resourceName: "icon_64x64")
             return
         }
-        if fileManager.fileExists(atPath: imagePath) {
-            image = UIImage(contentsOfFile: imagePath)
-        } else {
-            print("No image. Path: \(imagePath)")
+        if !imagePath.isEmpty {
+            imageView.image = ImageService().get(imagePath: imagePath)
         }
-        imageView.image = image
     }
 }
