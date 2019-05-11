@@ -12,7 +12,6 @@
 		941F3566227AFD8100BEB749 /* CardTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941F3563227AFA9000BEB749 /* CardTableCell.xib */; };
 		941F3567227AFD8500BEB749 /* UserHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F3564227AFA9000BEB749 /* UserHeaderTableViewCell.swift */; };
 		AC2D6F6B226B95F1007184DC /* DetailOfCard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC2D6F6A226B95F0007184DC /* DetailOfCard.storyboard */; };
-		AC46C9C22264FB390049E653 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC46C9C12264FB390049E653 /* AppDelegate.swift */; };
 		AC46C9C42264FB390049E653 /* MainAndCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC46C9C32264FB390049E653 /* MainAndCategoriesViewController.swift */; };
 		AC46C9C72264FB390049E653 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC46C9C52264FB390049E653 /* Main.storyboard */; };
 		AC46C9CC2264FB3B0049E653 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC46C9CA2264FB3B0049E653 /* LaunchScreen.storyboard */; };
@@ -21,6 +20,7 @@
 		AC8F8B4F226B947C00EDD8E4 /* ViewControllerDetailInformationAboutCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F8B4A226B947C00EDD8E4 /* ViewControllerDetailInformationAboutCard.swift */; };
 		AC8F8B50226B947C00EDD8E4 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F8B4C226B947C00EDD8E4 /* CardView.swift */; };
 		AC8F8B51226B947C00EDD8E4 /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC8F8B4D226B947C00EDD8E4 /* CardView.xib */; };
+		ACA23A602285AC430085B7AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA23A5F2285AC430085B7AB /* AppDelegate.swift */; };
 		ACAC35F622840E6400D0948E /* MainAndCategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAC35F422840E6400D0948E /* MainAndCategoriesViewModel.swift */; };
 		ACAC35F722840E6400D0948E /* UserHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACAC35F522840E6400D0948E /* UserHeaderTableViewCell.xib */; };
 		ACB0C5392279CA3400463D15 /* QRImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB0C5382279CA3400463D15 /* QRImageViewController.swift */; };
@@ -49,7 +49,6 @@
 		941F3564227AFA9000BEB749 /* UserHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		AC2D6F6A226B95F0007184DC /* DetailOfCard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DetailOfCard.storyboard; sourceTree = "<group>"; };
 		AC46C9BE2264FB390049E653 /* BusinessCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BusinessCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC46C9C12264FB390049E653 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC46C9C32264FB390049E653 /* MainAndCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAndCategoriesViewController.swift; sourceTree = "<group>"; };
 		AC46C9C62264FB390049E653 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AC46C9CB2264FB3B0049E653 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -59,6 +58,7 @@
 		AC8F8B4A226B947C00EDD8E4 /* ViewControllerDetailInformationAboutCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerDetailInformationAboutCard.swift; sourceTree = "<group>"; };
 		AC8F8B4C226B947C00EDD8E4 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		AC8F8B4D226B947C00EDD8E4 /* CardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
+		ACA23A5F2285AC430085B7AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACAC35F422840E6400D0948E /* MainAndCategoriesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAndCategoriesViewModel.swift; sourceTree = "<group>"; };
 		ACAC35F522840E6400D0948E /* UserHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		ACB0C5382279CA3400463D15 /* QRImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRImageViewController.swift; sourceTree = "<group>"; };
@@ -206,7 +206,7 @@
 			children = (
 				ACD854A22277A2ED00683591 /* Assets.xcassets */,
 				AC46C9CD2264FB3B0049E653 /* Info.plist */,
-				AC46C9C12264FB390049E653 /* AppDelegate.swift */,
+				ACA23A5F2285AC430085B7AB /* AppDelegate.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -411,6 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACA23A602285AC430085B7AB /* AppDelegate.swift in Sources */,
 				F79474FC2278F41900F05D9B /* ImageServiceProtocol.swift in Sources */,
 				F79474F82278F3FC00F05D9B /* DateService.swift in Sources */,
 				F7CB803C22703828004B5BAC /* DBServiceProtocol.swift in Sources */,
@@ -427,7 +428,6 @@
 				AC46C9C42264FB390049E653 /* MainAndCategoriesViewController.swift in Sources */,
 				ACAC35F622840E6400D0948E /* MainAndCategoriesViewModel.swift in Sources */,
 				F79474F62278F3EF00F05D9B /* CreateAndEditCardViewController.swift in Sources */,
-				AC46C9C22264FB390049E653 /* AppDelegate.swift in Sources */,
 				ACD8549F22779E2F00683591 /* CategoryRecord.swift in Sources */,
 				ACD8549822779DE200683591 /* String.swift in Sources */,
 				AC8F8B50226B947C00EDD8E4 /* CardView.swift in Sources */,
@@ -580,13 +580,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AP856KSRS2;
+				DEVELOPMENT_TEAM = 7S5RDK7P3Q;
 				INFOPLIST_FILE = BusinessCards/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.artem.BusinessCards;
+				PRODUCT_BUNDLE_IDENTIFIER = com.artem.eBusinessCards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -599,13 +599,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AP856KSRS2;
+				DEVELOPMENT_TEAM = 7S5RDK7P3Q;
 				INFOPLIST_FILE = BusinessCards/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.artem.BusinessCards;
+				PRODUCT_BUNDLE_IDENTIFIER = com.artem.eBusinessCards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -26,6 +26,7 @@ class ViewControllerDetailInformationAboutCard: UIViewController, UITableViewDel
         let moreActionButton = UIBarButtonItem(title: "...", style: .plain, target: self, action: #selector(tappedMore))
         let shareButton = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(createQRCode))
         navigationItem.rightBarButtonItems = [moreActionButton, shareButton]
+        cardView.setCard(card: cardRecord)
     }
 
     override func viewDidAppear(_ animated: Bool) {

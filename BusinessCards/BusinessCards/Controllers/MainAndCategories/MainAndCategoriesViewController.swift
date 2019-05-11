@@ -37,6 +37,7 @@ class MainAndCategoriesViewController: UIViewController {
         search.obscuresBackgroundDuringPresentation = false
         search.searchBar.placeholder = "Search..."
         self.navigationItem.searchController = search
+        self.search.definesPresentationContext = true
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAlertToAddCategory))
         viewModelOfCategories.onCardsChanged = {
             guard let key = $0.last else { return }
@@ -108,7 +109,7 @@ private extension MainAndCategoriesViewController {
 extension MainAndCategoriesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var key = [CategoryRecord](items.keys)
-        key = key.sorted { $0.name > $1.name }
+        key = key.sorted { $0.name < $1.name }
         let categories = viewModelOfCards.get(field: .category, value: key[section])
         guard isSectionOpened(section) else {
             guard categories.isEmpty else {
@@ -126,7 +127,7 @@ extension MainAndCategoriesViewController: UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: CardTableCell = tableView.dequeueReusableCell(for: indexPath)
         var key = [CategoryRecord](items.keys)
-        key = key.sorted { $0.name > $1.name }
+        key = key.sorted { $0.name < $1.name }
         let category = key[indexPath.section]
         let cards = viewModelOfCards.get(field: .category, value: category)
         cell.configureCell(card: cards[indexPath.row])
@@ -142,7 +143,7 @@ extension MainAndCategoriesViewController: UITableViewDelegate, UITableViewDataS
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var key = [CategoryRecord](items.keys)
-        key = key.sorted { $0.name > $1.name }
+        key = key.sorted { $0.name < $1.name }
         return key[section].name
     }
 
@@ -154,7 +155,7 @@ extension MainAndCategoriesViewController: UITableViewDelegate, UITableViewDataS
 
         header?.longTapHandler = { [unowned self] _ in
             var key = [CategoryRecord](self.items.keys)
-            key = key.sorted { $0.name > $1.name }
+            key = key.sorted { $0.name < $1.name }
             let alert = UIAlertController(title: key[section].name, message: "", preferredStyle: .alert)
             let addCardAction = UIAlertAction(title: "Add card", style: .default) { _ in
                 let createStoryboard = UIStoryboard(name: "CreateAndEditCard", bundle: nil)
@@ -192,7 +193,7 @@ extension MainAndCategoriesViewController: UITableViewDelegate, UITableViewDataS
         let viewControllerDetailInformationAboutCard = mainStoryboard.instantiateViewController(withIdentifier: "ViewControllerDetailInformationAboutCard")
             as? ViewControllerDetailInformationAboutCard
         var key = [CategoryRecord](items.keys)
-        key = key.sorted { $0.name > $1.name }
+        key = key.sorted { $0.name < $1.name }
         let category = key[indexPath.section]
         let cards = viewModelOfCards.get(field: .category, value: category)
         viewControllerDetailInformationAboutCard?.cardRecord = cards[indexPath.row]
