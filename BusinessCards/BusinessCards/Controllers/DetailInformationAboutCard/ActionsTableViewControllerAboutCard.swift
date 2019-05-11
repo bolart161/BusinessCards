@@ -16,8 +16,8 @@ class ActionsTableViewControllerAboutCard: UITableViewController {
     let array = ["Редактировать", "Удалить", "Добавить в календарь"]
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let navigationController = self.presentingViewController as? UINavigationController
-
+        let tabbarController = self.presentingViewController as? UITabBarController
+        let navigationController = tabbarController?.viewControllers?[0] as? UINavigationController
         switch indexPath.row {
         case 0: // Edit
             self.dismiss(animated: true) {

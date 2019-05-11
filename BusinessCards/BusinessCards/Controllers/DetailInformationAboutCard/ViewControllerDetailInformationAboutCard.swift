@@ -46,7 +46,7 @@ class ViewControllerDetailInformationAboutCard: UIViewController, UITableViewDel
         let address = "address: " + (cardRecord.address ?? "") + "\n"
         let website = "website: " + (cardRecord.website ?? "") + "\n"
         let stringForQR = name + surname + middleName + phone + company + email + address + website
-        let data = stringForQR.data(using: String.Encoding.ascii)
+        let data = stringForQR.data(using: String.Encoding.utf8)
         guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else { return }
         qrFilter.setValue(data, forKey: "inputMessage")
 

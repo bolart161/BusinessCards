@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Мои карты-->
+        <scene sceneID="blj-on-NaJ">
+            <objects>
+                <viewController storyboardIdentifier="MyCardsViewController" title="Мои карты" id="XFK-DE-rBc" customClass="MyCardsViewController" customModule="BusinessCards" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qiR-71-G2N">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="182" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fhx-6w-hBC">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="XFK-DE-rBc" id="aPs-xw-tOH"/>
+                                    <outlet property="delegate" destination="XFK-DE-rBc" id="VKx-D3-cKz"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fhx-6w-hBC" firstAttribute="leading" secondItem="aqz-Fx-wmf" secondAttribute="leading" id="4j5-B2-zSk"/>
+                            <constraint firstItem="aqz-Fx-wmf" firstAttribute="trailing" secondItem="fhx-6w-hBC" secondAttribute="trailing" id="5rh-2r-AEL"/>
+                            <constraint firstItem="fhx-6w-hBC" firstAttribute="top" secondItem="aqz-Fx-wmf" secondAttribute="top" id="PMl-al-XY8"/>
+                            <constraint firstItem="aqz-Fx-wmf" firstAttribute="bottom" secondItem="fhx-6w-hBC" secondAttribute="bottom" id="ypC-oa-TMu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aqz-Fx-wmf"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Мои карты" id="7CE-bN-uYE"/>
+                    <connections>
+                        <outlet property="tableView" destination="fhx-6w-hBC" id="4BT-xi-iuU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RTv-8D-u3a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="14" y="66"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,8 +1,8 @@
 //
-//  MainAndCategoriesViewController.swift
+//  MyCardsViewController.swift
 //  BusinessCards
 //
-//  Created by Artem on 15/04/2019.
+//  Created by Artem on 11/05/2019.
 //  Copyright © 2019 Artem Boltunov. All rights reserved.
 //
 
@@ -11,12 +11,12 @@ import Reusable
 import Then
 import UIKit
 
-class MainAndCategoriesViewController: UIViewController {
+class MyCardsViewController: UIViewController {
     @IBOutlet private var tableView: UITableView!
     // swiftlint:disable:next implicitly_unwrapped_optional
-    var viewModelOfCards: MainAndCategoriesViewModel<CardRecord>!
+    var viewModelOfCards: MyCardsViewModel<CardRecord>!
     // swiftlint:disable:next implicitly_unwrapped_optional
-    var viewModelOfCategories: MainAndCategoriesViewModel<CategoryRecord>!
+    var viewModelOfCategories: MyCardsViewModel<CategoryRecord>!
 
     private var items: [CategoryRecord: Results<CardRecord>] = [:] {
         didSet {
@@ -27,7 +27,6 @@ class MainAndCategoriesViewController: UIViewController {
     var cardAdded: ((CategoryRecord) -> Void)?
     private lazy var oldItems = items
     var openedSections: [Int: Bool] = [:]
-
     let search = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
@@ -51,7 +50,7 @@ class MainAndCategoriesViewController: UIViewController {
     }
 }
 
-private extension MainAndCategoriesViewController {
+private extension MyCardsViewController {
     private func isSectionOpened(_ section: Int) -> Bool {
         if let status = openedSections[section] {
             return status
@@ -108,7 +107,7 @@ private extension MainAndCategoriesViewController {
     }
 }
 
-extension MainAndCategoriesViewController: UITableViewDelegate, UITableViewDataSource {
+extension MyCardsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var key = [CategoryRecord](items.keys)
         key = key.sorted { $0.name < $1.name }
@@ -165,6 +164,7 @@ extension MainAndCategoriesViewController: UITableViewDelegate, UITableViewDataS
                     as? CreateAndEditCardViewController
                 guard let pCreateAndEditCardViewController = createAndEditCardViewController else { return }
                 pCreateAndEditCardViewController.setCategory(category: key[section])
+                pCreateAndEditCardViewController.isMyFlag(isMy: true)
                 self.navigationController?.pushViewController(pCreateAndEditCardViewController, animated: true)
                 self.tableView.reloadSections([section], with: .automatic)
             }
@@ -203,7 +203,7 @@ extension MainAndCategoriesViewController: UITableViewDelegate, UITableViewDataS
     }
 }
 
-extension MainAndCategoriesViewController: UISearchResultsUpdating, UISearchBarDelegate {
+extension MyCardsViewController: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else {
             return
