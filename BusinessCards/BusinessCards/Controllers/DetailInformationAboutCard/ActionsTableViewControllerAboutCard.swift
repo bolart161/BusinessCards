@@ -17,7 +17,7 @@ class ActionsTableViewControllerAboutCard: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tabbarController = self.presentingViewController as? UITabBarController
-        let navigationController = tabbarController?.viewControllers?[0] as? UINavigationController
+        let navigationController = tabbarController?.selectedViewController as? UINavigationController
         switch indexPath.row {
         case 0: // Edit
             self.dismiss(animated: true) {
@@ -45,7 +45,8 @@ class ActionsTableViewControllerAboutCard: UITableViewController {
     }
 
     private func deleteCard() {
-        let navigationController = self.presentingViewController as? UINavigationController
+        let tabbarController = self.presentingViewController as? UITabBarController
+        let navigationController = tabbarController?.selectedViewController as? UINavigationController
         let alert = UIAlertController(title: "Удалить", message: "Удалить эту карту?", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
         alert.addAction(cancelAction)
@@ -98,6 +99,7 @@ class ActionsTableViewControllerAboutCard: UITableViewController {
                 print("Error 2: \(String(describing: error))")
             }
         }
+        self.dismiss(animated: true)
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {

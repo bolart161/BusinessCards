@@ -18,7 +18,7 @@ class MainAndCategoriesViewController: UIViewController {
     // swiftlint:disable:next implicitly_unwrapped_optional
     var viewModelOfCategories: MainAndCategoriesViewModel<CategoryRecord>!
 
-    private var items: [CategoryRecord: Results<CardRecord>] = [:] {
+    private var items: [CategoryRecord: [CardRecord]] = [:] {
         didSet {
             self.tableView.reloadData()
         }
@@ -36,18 +36,29 @@ class MainAndCategoriesViewController: UIViewController {
         search.searchResultsUpdater = self
         search.obscuresBackgroundDuringPresentation = false
         search.searchBar.placeholder = "Поиск..."
+        self.definesPresentationContext = true
         self.navigationItem.searchController = search
-        self.search.definesPresentationContext = true
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAlertToAddCategory))
         viewModelOfCategories.onCardsChanged = {
             guard let key = $0.last else { return }
-            self.items[key] = self.viewModelOfCards.get(field: .category, value: key)
+            let cards = self.viewModelOfCards.get(field: .category, value: key)
+            var res = [CardRecord]()
+            for value in cards where !value.isMy {
+                res.append(value)
+            }
+            self.items[key] = res
         }
 
         tableView.do {
             $0.register(cellType: CardTableCell.self)
             $0.register(UserHeaderTableViewCell.self, forHeaderFooterViewReuseIdentifier: "header")
         }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        fillTableView()
+        tableView.reloadData()
     }
 }
 
@@ -99,11 +110,19 @@ private extension MainAndCategoriesViewController {
             return
         }
         viewModelOfCategories.add(category)
+        fillTableView()
+        tableView.reloadData()
     }
 
     private func fillTableView() {
+        items.removeAll()
         for item in viewModelOfCategories.getAll(sotrBy: .name) {
-            items[item] = viewModelOfCards.get(field: .category, value: item)
+            let cards = viewModelOfCards.get(field: .category, value: item)
+            var res = [CardRecord]()
+            for value in cards where !value.isMy {
+                res.append(value)
+            }
+            items[item] = res
         }
     }
 }
@@ -112,14 +131,15 @@ extension MainAndCategoriesViewController: UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var key = [CategoryRecord](items.keys)
         key = key.sorted { $0.name < $1.name }
-        let categories = viewModelOfCards.get(field: .category, value: key[section])
+        let category = key[section]
+        let cards = [CardRecord](items[category] ?? []) //viewModelOfCards.get(field: .category, value: key[section])
         guard isSectionOpened(section) else {
-            guard categories.isEmpty else {
+            guard cards.isEmpty else {
                 return 1
             }
             return 0
         }
-        return categories.count
+        return cards.count
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -131,7 +151,7 @@ extension MainAndCategoriesViewController: UITableViewDelegate, UITableViewDataS
         var key = [CategoryRecord](items.keys)
         key = key.sorted { $0.name < $1.name }
         let category = key[indexPath.section]
-        let cards = viewModelOfCards.get(field: .category, value: category)
+        let cards = [CardRecord](items[category] ?? [])  //viewModelOfCards.get(field: .category, value: category)
         cell.configureCell(card: cards[indexPath.row])
         return cell
     }
@@ -173,7 +193,6 @@ extension MainAndCategoriesViewController: UITableViewDelegate, UITableViewDataS
                 // swiftlint:disable:next force_unwrapping
                 self.items.remove(at: self.items.index(forKey: key[section])!)
                 self.tableView.reloadData()
-                print(self.viewModelOfCategories.getAll(sotrBy: .name))
             }
             alert.addAction(addCardAction)
             alert.addAction(deleteAction)
@@ -184,7 +203,7 @@ extension MainAndCategoriesViewController: UITableViewDelegate, UITableViewDataS
 
     func tableView(_ tableView: UITableView, didEndDisplayingHeaderView view: UIView, forSection section: Int) {
         if let header = view as? UITableViewHeaderFooterView {
-            header.backgroundView?.backgroundColor = UIColor.white
+            header.backgroundView?.backgroundColor = UIColor.blue
             header.textLabel?.textColor = UIColor.white
         }
     }
@@ -196,7 +215,7 @@ extension MainAndCategoriesViewController: UITableViewDelegate, UITableViewDataS
         var key = [CategoryRecord](items.keys)
         key = key.sorted { $0.name < $1.name }
         let category = key[indexPath.section]
-        let cards = viewModelOfCards.get(field: .category, value: category)
+        let cards = [CardRecord](items[category] ?? []) //viewModelOfCards.get(field: .category, value: category)
         viewControllerDetailInformationAboutCard?.cardRecord = cards[indexPath.row]
         guard let pViewControllerDetailInformation = viewControllerDetailInformationAboutCard else { return }
         navigationController?.pushViewController(pViewControllerDetailInformation, animated: true)
@@ -214,7 +233,12 @@ extension MainAndCategoriesViewController: UISearchResultsUpdating, UISearchBarD
         }
         items.removeAll()
         for item in viewModelOfCategories.getForSeacrh(field: .name, contains: text) {
-            items[item] = viewModelOfCards.get(field: .category, value: item)
+            let cards = viewModelOfCards.get(field: .category, value: item)
+            var res = [CardRecord]()
+            for value in cards where !value.isMy {
+                res.append(value)
+            }
+            items[item] = res
         }
     }
 }
