@@ -220,6 +220,22 @@ extension MainAndCategoriesViewController: UITableViewDelegate, UITableViewDataS
         guard let pViewControllerDetailInformation = viewControllerDetailInformationAboutCard else { return }
         navigationController?.pushViewController(pViewControllerDetailInformation, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else { return }
+        var key = [CategoryRecord](items.keys)
+        key = key.sorted { $0.name < $1.name }
+        let category = key[indexPath.section]
+        let cards = [CardRecord](items[category] ?? [])
+        viewModelOfCards.delete(data: cards[indexPath.row])
+        items.removeAll()
+        self.fillTableView()
+        self.tableView.reloadData()
+    }
 }
 
 extension MainAndCategoriesViewController: UISearchResultsUpdating, UISearchBarDelegate {

@@ -43,5 +43,6 @@ class MainAndCategoriesViewModel<T: Object> {
 
     func delete(data: T) {
         realmService.delete(data)
+        cards = realmService.getAll()
     }
 }
