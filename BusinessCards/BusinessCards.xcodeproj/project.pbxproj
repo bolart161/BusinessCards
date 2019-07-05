@@ -11,6 +11,9 @@
 		941F3565227AFD7300BEB749 /* CardTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F3562227AFA9000BEB749 /* CardTableCell.swift */; };
 		941F3566227AFD8100BEB749 /* CardTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941F3563227AFA9000BEB749 /* CardTableCell.xib */; };
 		941F3567227AFD8500BEB749 /* UserHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F3564227AFA9000BEB749 /* UserHeaderTableViewCell.swift */; };
+		AC047E8E22CFCB7900289B8B /* CardForAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC047E8D22CFCB7900289B8B /* CardForAPI.swift */; };
+		AC047E9022CFCD4100289B8B /* CardNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC047E8F22CFCD4100289B8B /* CardNetworkService.swift */; };
+		AC047E9222CFD0B700289B8B /* UrlFromAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC047E9122CFD0B700289B8B /* UrlFromAPI.swift */; };
 		AC2D6F6B226B95F1007184DC /* DetailOfCard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC2D6F6A226B95F0007184DC /* DetailOfCard.storyboard */; };
 		AC46C9C42264FB390049E653 /* MainAndCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC46C9C32264FB390049E653 /* MainAndCategoriesViewController.swift */; };
 		AC46C9C72264FB390049E653 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC46C9C52264FB390049E653 /* Main.storyboard */; };
@@ -50,6 +53,9 @@
 		941F3562227AFA9000BEB749 /* CardTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTableCell.swift; sourceTree = "<group>"; };
 		941F3563227AFA9000BEB749 /* CardTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardTableCell.xib; sourceTree = "<group>"; };
 		941F3564227AFA9000BEB749 /* UserHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		AC047E8D22CFCB7900289B8B /* CardForAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardForAPI.swift; sourceTree = "<group>"; };
+		AC047E8F22CFCD4100289B8B /* CardNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardNetworkService.swift; sourceTree = "<group>"; };
+		AC047E9122CFD0B700289B8B /* UrlFromAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlFromAPI.swift; sourceTree = "<group>"; };
 		AC2D6F6A226B95F0007184DC /* DetailOfCard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DetailOfCard.storyboard; sourceTree = "<group>"; };
 		AC46C9BE2264FB390049E653 /* BusinessCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BusinessCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC46C9C32264FB390049E653 /* MainAndCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAndCategoriesViewController.swift; sourceTree = "<group>"; };
@@ -231,6 +237,8 @@
 			children = (
 				ACD8549E22779E2F00683591 /* CardRecord.swift */,
 				ACD8549D22779E2F00683591 /* CategoryRecord.swift */,
+				AC047E8D22CFCB7900289B8B /* CardForAPI.swift */,
+				AC047E9122CFD0B700289B8B /* UrlFromAPI.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -241,6 +249,7 @@
 				F79474F92278F40A00F05D9B /* ImageService.swift */,
 				F79474F72278F3FC00F05D9B /* DateService.swift */,
 				F7CB803B22703828004B5BAC /* DBService.swift */,
+				AC047E8F22CFCD4100289B8B /* CardNetworkService.swift */,
 				F7CB803922703828004B5BAC /* Protocols */,
 			);
 			path = Services;
@@ -363,6 +372,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-BusinessCards/Pods-BusinessCards-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework",
@@ -372,6 +382,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reusable.framework",
@@ -429,11 +440,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC047E9022CFCD4100289B8B /* CardNetworkService.swift in Sources */,
+				AC047E9222CFD0B700289B8B /* UrlFromAPI.swift in Sources */,
 				ACA23A602285AC430085B7AB /* AppDelegate.swift in Sources */,
 				F79474FC2278F41900F05D9B /* ImageServiceProtocol.swift in Sources */,
 				F79474F82278F3FC00F05D9B /* DateService.swift in Sources */,
 				F7CB803C22703828004B5BAC /* DBServiceProtocol.swift in Sources */,
 				ACB0C5392279CA3400463D15 /* QRImageViewController.swift in Sources */,
+				AC047E8E22CFCB7900289B8B /* CardForAPI.swift in Sources */,
 				941F3565227AFD7300BEB749 /* CardTableCell.swift in Sources */,
 				F7CB804022703845004B5BAC /* (null) in Sources */,
 				F79474FA2278F40A00F05D9B /* ImageService.swift in Sources */,
