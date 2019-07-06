@@ -39,7 +39,7 @@ class DBService<T: Object>: DBServiceProtocol {
 
     func get(field: String, value: Any, sortBy: String? = nil, ascending: Bool = true) -> Results<T> {
         // swiftlint:disable force_cast
-        let predicate = NSPredicate(format: "\(field) == [c]%@", value as! CVarArg)
+        let predicate = NSPredicate(format: "\(field) == [cd]%@", value as! CVarArg)
         // swiftlint:enable force_cast
         if let sortField = sortBy {
             return realm.objects(T.self).filter(predicate).sorted(byKeyPath: sortField, ascending: ascending)
@@ -59,7 +59,7 @@ class DBService<T: Object>: DBServiceProtocol {
 
         let subpredicates = fields.map { property in
             // swiftlint:disable:next implicit_return superfluous_disable_command
-            return NSPredicate(format: "%K CONTAINS[c] %@", property, contains)
+            return NSPredicate(format: "%K CONTAINS[cd] %@", property, contains)
         }
         let predicate = NSCompoundPredicate(orPredicateWithSubpredicates: subpredicates)
 
