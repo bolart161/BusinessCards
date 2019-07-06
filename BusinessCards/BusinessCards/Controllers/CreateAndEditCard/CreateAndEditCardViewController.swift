@@ -22,7 +22,11 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
     @IBOutlet private var addressField: UITextField!
     @IBOutlet private var websiteField: UITextField!
     @IBOutlet private var descriptionField: UITextView!
-    @IBOutlet private var addImageButtonOutlet: UIButton!
+    @IBOutlet private var addImageButtonOutlet: UIButton! {
+            didSet {
+                addImageButtonOutlet.imageView?.contentMode = .scaleAspectFill
+            }
+    }
     private let cards = DBService<CardRecord>()
     private let categories = DBService<CategoryRecord>()
     private lazy var categoriesList = DBService<CategoryRecord>().getAll(sortBy: .name, ascending: true)
