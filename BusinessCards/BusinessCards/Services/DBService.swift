@@ -47,7 +47,7 @@ class DBService<T: Object>: DBServiceProtocol {
         return realm.objects(T.self).filter(predicate)
     }
 
-    func get(field: String, contains: String, sortBy: String? = nil, ascending: Bool = true) -> Results<T> {
+    func get(contains: String, sortBy: String? = nil, ascending: Bool = true) -> Results<T> {
         var fields: [String]
         if T.self == CardRecord.self {
             fields = [.name, .surname, .middleName, .phone, .company, .email, .address, .website, .descriptionText]
