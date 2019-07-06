@@ -32,15 +32,12 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
     private lazy var categoriesList = DBService<CategoryRecord>().getAll(sortBy: .name, ascending: true)
     private var card: CardRecord?
     private var category: CategoryRecord?
+    private var imagePicker = UIImagePickerController()
     private var isMy: Bool = false
     private var imageWasChanged: Bool = false
 
     @IBAction private func addImageButton(_ sender: Any) {
-        let image = UIImagePickerController()
-        image.delegate = self
-        image.sourceType = UIImagePickerController.SourceType.photoLibrary
-        image.allowsEditing = false
-        self.present(image, animated: true)
+        self.present(self.imagePicker, animated: true)
     }
 
     @IBAction private func saveButton(_ sender: Any) {
@@ -94,6 +91,7 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
     override func viewDidLoad() {
         super.viewDidLoad()
         createCategoryPicker()
+        configImagePicker()
         createToolbar()
         makeTextViewBorders()
         fillInfo()
@@ -135,6 +133,12 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
         let categoryPicker = UIPickerView()
         categoryPicker.delegate = self
         categoryField.inputView = categoryPicker
+    }
+
+    private func configImagePicker() {
+        imagePicker.delegate = self
+        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+        imagePicker.allowsEditing = false
     }
 
     private func createToolbar() {
