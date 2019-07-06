@@ -51,11 +51,21 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
         }
 
         var textInfo = getInfo()
-        var category: CategoryRecord
-        if let categoryName = categoryField.text, let categoryRecord = categories.get(field: .name, value: categoryName).first {
+        // swiftlint:disable:next implicitly_unwrapped_optional
+        var category: CategoryRecord!
+        guard let categoryName = categoryField.text else { return }
+        if let categoryRecord = categories.get(field: .name, value: categoryName).first {
             category = categoryRecord
         } else {
-            fatalError("No category with the same name: \(String(describing: categoryField.text))")
+            let alert = UIAlertController(title: "Категории с таким именем не существует", message: "Создать?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Создать", style: .default) { _ in
+                category = CategoryRecord(name: categoryName)
+                self.categories.add(category)
+            }
+            )
+            self.present(alert, animated: true)
+            return
         }
 
         if let card = self.card {
