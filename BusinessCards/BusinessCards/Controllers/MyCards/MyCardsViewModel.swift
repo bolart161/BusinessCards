@@ -37,8 +37,8 @@ class MyCardsViewModel<T: Object> {
         return realmService.getAll(sortBy: sotrBy, ascending: false)
     }
 
-    func getForSeacrh(field: String, contains: String) -> Results<T> {
-        return realmService.get(field: field, contains: contains)
+    func getForSearch(contains: String) -> Results<T> {
+        return realmService.get(contains: contains)
     }
 
     func delete(data: T) {
