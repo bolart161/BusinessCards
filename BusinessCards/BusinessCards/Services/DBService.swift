@@ -37,10 +37,18 @@ class DBService<T: Object>: DBServiceProtocol {
         }
     }
 
+    func get(field: String, value: Bool, sortBy: String? = nil, ascending: Bool = true) -> Results<T> {
+        let predicate = NSPredicate(format: "\(field) == %d", value as CVarArg)
+        return get(predicate: predicate, sortBy: sortBy, ascending: ascending)
+    }
+
     func get(field: String, value: Any, sortBy: String? = nil, ascending: Bool = true) -> Results<T> {
-        // swiftlint:disable force_cast
-        let predicate = NSPredicate(format: "\(field) == [cd]%@", value as! CVarArg)
-        // swiftlint:enable force_cast
+        // swiftlint:disable:next force_cast
+        let predicate = NSPredicate(format: "\(field) ==[cd] %@", value as! CVarArg)
+        return get(predicate: predicate, sortBy: sortBy, ascending: ascending)
+    }
+
+    private func get(predicate: NSPredicate, sortBy: String?, ascending: Bool) -> Results<T> {
         if let sortField = sortBy {
             return realm.objects(T.self).filter(predicate).sorted(byKeyPath: sortField, ascending: ascending)
         }
@@ -52,7 +60,7 @@ class DBService<T: Object>: DBServiceProtocol {
         if T.self == CardRecord.self {
             fields = [.name, .surname, .middleName, .phone, .company, .email, .address, .website, .descriptionText]
         } else if T.self == CategoryRecord.self {
-            fields = [.name]
+            fields = [.name, .isMy]
         } else {
             fatalError("Wrong object type")
         }

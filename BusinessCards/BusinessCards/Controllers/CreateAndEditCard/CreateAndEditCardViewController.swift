@@ -27,14 +27,21 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
                 addImageButtonOutlet.imageView?.contentMode = .scaleAspectFill
             }
     }
+    private let categoryPicker = UIPickerView()
     private let cards = DBService<CardRecord>()
     private let categories = DBService<CategoryRecord>()
-    private lazy var categoriesList = DBService<CategoryRecord>().getAll(sortBy: .name, ascending: true)
-    private var cardNetworkService = CardNetworkService()
+    private lazy var categoriesList = categories.getAll(sortBy: .name, ascending: true)
+    private var isMy: Bool = false {
+        didSet {
+            let predicate = NSPredicate(format: "isMy == %d", self.isMy as CVarArg)
+            self.categoriesList = self.categoriesList.filter(predicate)
+            self.categoryPicker.reloadAllComponents()
+        }
+    }
     private var card: CardRecord?
     private var category: CategoryRecord?
+    private var cardNetworkService = CardNetworkService()
     private var imagePicker = UIImagePickerController()
-    private var isMy: Bool = false
     private var imageWasChanged: Bool = false
     private var url: String = ""
 
@@ -74,7 +81,7 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
             let alert = UIAlertController(title: "Категории с таким именем не существует", message: "Создать?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
             alert.addAction(UIAlertAction(title: "Создать", style: .default) { _ in
-                category = CategoryRecord(name: categoryName)
+                category = CategoryRecord(name: categoryName, isMy: self.isMy)
                 self.categories.add(category)
             }
             )
@@ -98,7 +105,7 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
         }
 
         // swiftlint:disable:next force_unwrapping
-        cards.add(CardRecord(name: textInfo[.name]!, surname: textInfo[.surname]!, phone: textInfo[.phone]!, isMy: isMy, category: category, info: textInfo))
+        cards.add(CardRecord(name: textInfo[.name]!, surname: textInfo[.surname]!, phone: textInfo[.phone]!, category: category, info: textInfo))
         _ = self.navigationController?.popViewController(animated: true)
     }
 
@@ -155,9 +162,8 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
     }
 
     private func createCategoryPicker() {
-        let categoryPicker = UIPickerView()
-        categoryPicker.delegate = self
-        categoryField.inputView = categoryPicker
+        self.categoryPicker.delegate = self
+        self.categoryField.inputView = categoryPicker
     }
 
     private func configImagePicker() {
@@ -199,7 +205,6 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
 
     func setCardRecord(card: CardRecord) {
         self.card = card
-        isMyFlag(isMy: card.isMy)
     }
 
     func setUrl(url: String) {
@@ -207,11 +212,12 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
     }
 
     func isMyFlag(isMy: Bool) {
-        self.isMy = isMy
+        self.isMy = false
     }
 
     func setCategory(category: CategoryRecord) {
         self.category = category
+        self.isMy = category.isMy
     }
 
     // swiftlint:disable:next cyclomatic_complexity 

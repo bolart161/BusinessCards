@@ -10,10 +10,12 @@ import RealmSwift
 
 class CategoryRecord: Object {
     @objc dynamic var name = ""
+    @objc dynamic var isMy = false
     @objc dynamic var created = Date()
 
-    convenience init(name: String) {
+    convenience init(name: String, isMy: Bool) {
         self.init()
         self.name = name
+        self.isMy = isMy
     }
 }
