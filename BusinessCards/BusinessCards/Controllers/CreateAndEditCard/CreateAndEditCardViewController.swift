@@ -81,7 +81,7 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
             let alert = UIAlertController(title: "Категории с таким именем не существует", message: "Создать?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
             alert.addAction(UIAlertAction(title: "Создать", style: .default) { _ in
-                category = CategoryRecord(name: categoryName)
+                category = CategoryRecord(name: categoryName, isMy: self.isMy)
                 self.categories.add(category)
             }
             )
@@ -210,7 +210,11 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
     func setUrl(url: String) {
         self.url = url
     }
-  
+
+    func isMyFlag(isMy: Bool) {
+        self.isMy = false
+    }
+
     func setCategory(category: CategoryRecord) {
         self.category = category
         self.isMy = category.isMy
