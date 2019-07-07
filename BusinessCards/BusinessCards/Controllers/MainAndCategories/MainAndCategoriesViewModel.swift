@@ -29,12 +29,16 @@ class MainAndCategoriesViewModel<T: Object> {
         cards = realmService.getAll()
     }
 
+    func get(field: String, value: Bool, sortBy: String? = nil, ascending: Bool = true) -> Results<T> {
+        return realmService.get(field: field, value: value, sortBy: sortBy, ascending: ascending)
+    }
+
     func get(field: String, value: Any, sortBy: String? = nil, ascending: Bool = true) -> Results<T> {
         return realmService.get(field: field, value: value, sortBy: sortBy, ascending: ascending)
     }
 
-    func getAll(sotrBy: String?) -> Results<T> {
-        return realmService.getAll(sortBy: sotrBy, ascending: false)
+    func getAll(sortBy: String?) -> Results<T> {
+        return realmService.getAll(sortBy: sortBy, ascending: false)
     }
 
     func getForSearch(contains: String) -> Results<T> {
