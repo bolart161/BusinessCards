@@ -241,7 +241,7 @@ extension MainAndCategoriesViewController: UISearchResultsUpdating, UISearchBarD
             return
         }
         items.removeAll()
-        for item in viewModelOfCategories.getForSearch(contains: text) {
+        for item in viewModelOfCategories.getForSearch(contains: text).filter("isMy == %d", false) {
             let res = viewModelOfCards.get(field: .category, value: item)
             items[item] = Array(res)
         }

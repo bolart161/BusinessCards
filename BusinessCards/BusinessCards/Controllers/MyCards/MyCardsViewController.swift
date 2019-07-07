@@ -224,7 +224,7 @@ extension MyCardsViewController: UISearchResultsUpdating, UISearchBarDelegate {
             return
         }
         items.removeAll()
-        for item in viewModelOfCategories.get(field: .name, value: text) {
+        for item in viewModelOfCategories.getForSearch(contains: text).filter("isMy == %d", true) {
             let res = viewModelOfCards.get(field: .category, value: item)
             items[item] = Array(res)
         }
