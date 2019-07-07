@@ -18,7 +18,7 @@ class ViewControllerDetailInformationAboutCard: UIViewController, UITableViewDel
 
     private enum CardTitles: Int, CaseIterable {
         case name = 0
-        case surname, middleName, phone, isMy, category, company, email, address, website, created, description
+        case surname, middleName, phone, category, company, email, address, website, created, description
     }
 
     override func viewDidLoad() {
@@ -119,9 +119,6 @@ extension ViewControllerDetailInformationAboutCard: UITableViewDataSource {
         case .phone:
             title = "Телефон:"
             value = self.cardRecord.phone
-        case .isMy:
-            title = "Моя:"
-            value = self.cardRecord.isMy ? "Да":"Нет"
         case .email:
             title = "Почта:"
             value = self.cardRecord.email
