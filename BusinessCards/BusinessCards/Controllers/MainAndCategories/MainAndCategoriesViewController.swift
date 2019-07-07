@@ -27,7 +27,6 @@ class MainAndCategoriesViewController: UIViewController {
     var cardAdded: ((CategoryRecord) -> Void)?
     private lazy var oldItems = items
     var openedSections: [Int: Bool] = [:]
-
     let search = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
@@ -93,7 +92,9 @@ private extension MainAndCategoriesViewController {
             guard let text = alert.textFields?.first?.text else {
                 return
             }
-            self.addCategory(categoryName: text)
+            DispatchQueue.main.async {
+                self.addCategory(categoryName: text)
+            }
         }
         let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
         alert.addAction(cancelAction)
@@ -151,15 +152,15 @@ extension MainAndCategoriesViewController: UITableViewDelegate, UITableViewDataS
         var key = [CategoryRecord](items.keys)
         key = key.sorted { $0.name < $1.name }
         let category = key[indexPath.section]
-        let cards = [CardRecord](items[category] ?? [])  //viewModelOfCards.get(field: .category, value: category)
+        let cards = [CardRecord](items[category] ?? [])
         cell.configureCell(card: cards[indexPath.row])
         return cell
     }
 
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let header = view as? UITableViewHeaderFooterView {
-            header.backgroundView?.backgroundColor = UIColor.blue
-            header.textLabel?.textColor = UIColor.white
+            header.backgroundView?.backgroundColor = UIColor.white
+            header.textLabel?.font = UIFont(name: "Avenir", size: 20)
         }
     }
 
@@ -201,13 +202,6 @@ extension MainAndCategoriesViewController: UITableViewDelegate, UITableViewDataS
         return header
     }
 
-    func tableView(_ tableView: UITableView, didEndDisplayingHeaderView view: UIView, forSection section: Int) {
-        if let header = view as? UITableViewHeaderFooterView {
-            header.backgroundView?.backgroundColor = UIColor.blue
-            header.textLabel?.textColor = UIColor.white
-        }
-    }
-
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let mainStoryboard = UIStoryboard(name: "DetailOfCard", bundle: nil)
         let viewControllerDetailInformationAboutCard = mainStoryboard.instantiateViewController(withIdentifier: "ViewControllerDetailInformationAboutCard")
@@ -235,6 +229,13 @@ extension MainAndCategoriesViewController: UITableViewDelegate, UITableViewDataS
         items.removeAll()
         self.fillTableView()
         self.tableView.reloadData()
+    }
+
+    func tableView(_ tableView: UITableView, didEndDisplayingHeaderView view: UIView, forSection section: Int) {
+        if let header = view as? UITableViewHeaderFooterView {
+            header.backgroundView?.backgroundColor = UIColor.white
+            header.textLabel?.font = UIFont(name: "Avenir", size: 20)
+        }
     }
 }
 

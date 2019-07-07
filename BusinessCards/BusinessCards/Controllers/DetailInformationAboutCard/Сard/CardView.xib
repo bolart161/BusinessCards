@@ -20,13 +20,13 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleAspectFit" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="360" height="181"/>
+            <rect key="frame" x="0.0" y="0.0" width="360" height="100"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddImage" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qeo-9s-pdY">
-                    <rect key="frame" x="16" y="10" width="98" height="98"/>
+                    <rect key="frame" x="5" y="10" width="80" height="80"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="qeo-9s-pdY" secondAttribute="height" multiplier="1:1" id="mEq-X8-PEX"/>
+                        <constraint firstAttribute="width" secondItem="qeo-9s-pdY" secondAttribute="height" multiplier="1:1" id="74I-gl-bBj"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -34,39 +34,39 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdf-Pz-z34">
-                    <rect key="frame" x="16" y="123" width="141.5" height="23"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="23" id="8UL-7m-YXu"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Surname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E5i-1g-N7R">
-                    <rect key="frame" x="122" y="10" width="140.5" height="23"/>
-                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <rect key="frame" x="104" y="5" width="261" height="27.5"/>
+                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                    <color key="textColor" red="0.088346016839378261" green="0.088346016839378261" blue="0.088346016839378261" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8-929-821-40-30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eG-8s-gsK">
-                    <rect key="frame" x="122" y="41" width="149" height="23"/>
-                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <rect key="frame" x="104" y="37.5" width="261" height="22"/>
+                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                    <color key="textColor" red="0.088346016839378261" green="0.088346016839378261" blue="0.088346016839378261" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdf-Pz-z34">
+                    <rect key="frame" x="104" y="64.5" width="251" height="25"/>
+                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                    <color key="textColor" red="0.088346016839378261" green="0.088346016839378261" blue="0.088346016839378261" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="hdf-Pz-z34" firstAttribute="top" secondItem="qeo-9s-pdY" secondAttribute="bottom" constant="15" id="5sl-7M-dGE"/>
-                <constraint firstAttribute="bottom" secondItem="hdf-Pz-z34" secondAttribute="bottom" constant="35" id="ER3-Dx-bKU"/>
-                <constraint firstItem="hdf-Pz-z34" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="VB5-zV-mNd"/>
-                <constraint firstItem="E5i-1g-N7R" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="VMb-d8-8u5"/>
-                <constraint firstItem="qeo-9s-pdY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="cQG-ca-AJe"/>
-                <constraint firstItem="qeo-9s-pdY" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="gRz-a8-iac"/>
-                <constraint firstItem="4eG-8s-gsK" firstAttribute="leading" secondItem="qeo-9s-pdY" secondAttribute="trailing" constant="8" id="hoA-WH-nhf"/>
-                <constraint firstItem="E5i-1g-N7R" firstAttribute="leading" secondItem="qeo-9s-pdY" secondAttribute="trailing" constant="8" id="plC-gU-PTg"/>
-                <constraint firstItem="4eG-8s-gsK" firstAttribute="top" secondItem="E5i-1g-N7R" secondAttribute="bottom" constant="8" id="yR9-z0-PQs"/>
+                <constraint firstItem="4eG-8s-gsK" firstAttribute="top" secondItem="E5i-1g-N7R" secondAttribute="bottom" constant="5" id="AQQ-A8-hPC"/>
+                <constraint firstItem="4eG-8s-gsK" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="5" id="ILV-l5-tIm"/>
+                <constraint firstItem="E5i-1g-N7R" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="5" id="IwG-GB-sxc"/>
+                <constraint firstItem="hdf-Pz-z34" firstAttribute="top" secondItem="4eG-8s-gsK" secondAttribute="bottom" constant="5" id="Wr3-17-AwT"/>
+                <constraint firstItem="hdf-Pz-z34" firstAttribute="leading" secondItem="qeo-9s-pdY" secondAttribute="trailing" constant="19" id="Y2z-nY-Twn"/>
+                <constraint firstItem="E5i-1g-N7R" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="aJs-PP-w9C"/>
+                <constraint firstItem="E5i-1g-N7R" firstAttribute="leading" secondItem="qeo-9s-pdY" secondAttribute="trailing" constant="19" id="dMo-Wi-oee"/>
+                <constraint firstItem="qeo-9s-pdY" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="hi1-8X-8mI"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hdf-Pz-z34" secondAttribute="trailing" constant="5" id="kjK-LA-4Oc"/>
+                <constraint firstItem="qeo-9s-pdY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="l9I-lY-pep"/>
+                <constraint firstItem="4eG-8s-gsK" firstAttribute="leading" secondItem="qeo-9s-pdY" secondAttribute="trailing" constant="19" id="lXG-bh-oYc"/>
+                <constraint firstAttribute="bottom" secondItem="qeo-9s-pdY" secondAttribute="bottom" constant="10" id="ncq-8n-uHB"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -76,7 +76,7 @@
                 </userDefinedRuntimeAttribute>
                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
             </userDefinedRuntimeAttributes>
-            <point key="canvasLocation" x="76.875" y="60.625"/>
+            <point key="canvasLocation" x="76.875" y="10"/>
         </view>
     </objects>
     <resources>

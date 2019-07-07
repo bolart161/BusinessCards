@@ -5,7 +5,7 @@
 //  Created by Artem on 14/04/2019.
 //  Copyright © 2019 Александр Пономарёв. All rights reserved.
 //
-
+import Reusable
 import UIKit
 
 class ViewControllerDetailInformationAboutCard: UIViewController, UITableViewDelegate {
@@ -24,10 +24,15 @@ class ViewControllerDetailInformationAboutCard: UIViewController, UITableViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
-        let moreActionButton = UIBarButtonItem(title: "...", style: .plain, target: self, action: #selector(tappedMore))
-        let shareButton = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(createQRCode))
-        navigationItem.rightBarButtonItems = [moreActionButton, shareButton]
+        let moreActionButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(tappedMore))
+        let qrButton = UIBarButtonItem(image: UIImage(named: .QRIcon), style: .plain, target: self, action: #selector(createQRCode))
+        navigationItem.rightBarButtonItems = [moreActionButton, qrButton]
         cardView.setCard(card: cardRecord)
+        self.tableView.register(cellType: InfoCell.self)
+        self.tableView.register(cellType: DescriptionCell.self)
+        self.tableView.translatesAutoresizingMaskIntoConstraints = false
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.estimatedRowHeight = 100
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -94,10 +99,11 @@ extension ViewControllerDetailInformationAboutCard: UITableViewDataSource {
     }
     // swiftlint:disable:next cyclomatic_complexity
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        let cell: InfoCell = tableView.dequeueReusableCell(for: indexPath)
 
         guard let cardTitle = CardTitles(rawValue: indexPath.row) else { return cell }
-        let value, title: String?
+        let value: String?
+        let title: String
 
         switch cardTitle {
         case .address:
@@ -125,15 +131,17 @@ extension ViewControllerDetailInformationAboutCard: UITableViewDataSource {
             title = "Сайт:"
             value = self.cardRecord.website
         case .description:
+            let myCell = tableView.dequeueReusableCell(for: indexPath) as DescriptionCell
             title = "Описание:"
             value = self.cardRecord.descriptionText
+            myCell.setInfo(title: title, value: value)
+            return myCell
         case .company:
             title = "Компания:"
             value = self.cardRecord.company
         }
 
-        cell.textLabel?.text = title
-        cell.detailTextLabel?.text = value
+        cell.setInfo(title: title, value: value)
         return cell
     }
 }

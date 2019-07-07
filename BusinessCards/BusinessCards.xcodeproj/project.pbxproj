@@ -34,6 +34,11 @@
 		ACD8549F22779E2F00683591 /* CategoryRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD8549D22779E2F00683591 /* CategoryRecord.swift */; };
 		ACD854A022779E2F00683591 /* CardRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD8549E22779E2F00683591 /* CardRecord.swift */; };
 		ACD854A32277A2ED00683591 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACD854A22277A2ED00683591 /* Assets.xcassets */; };
+		ACEDA92022D23C8900F4472D /* CellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEDA91F22D23C8900F4472D /* CellProtocol.swift */; };
+		ACEDA92222D23CF700F4472D /* InfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACEDA92122D23CF700F4472D /* InfoCell.xib */; };
+		ACEDA92422D23DF600F4472D /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEDA92322D23DF600F4472D /* InfoCell.swift */; };
+		ACEDA92622D2420100F4472D /* DescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACEDA92522D2420100F4472D /* DescriptionCell.xib */; };
+		ACEDA92822D2422C00F4472D /* DescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEDA92722D2422C00F4472D /* DescriptionCell.swift */; };
 		F79474F42278F3E000F05D9B /* CreateAndEditCard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F79474F32278F3E000F05D9B /* CreateAndEditCard.storyboard */; };
 		F79474F62278F3EF00F05D9B /* CreateAndEditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79474F52278F3EE00F05D9B /* CreateAndEditCardViewController.swift */; };
 		F79474F82278F3FC00F05D9B /* DateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79474F72278F3FC00F05D9B /* DateService.swift */; };
@@ -78,6 +83,11 @@
 		ACD8549D22779E2F00683591 /* CategoryRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryRecord.swift; sourceTree = "<group>"; };
 		ACD8549E22779E2F00683591 /* CardRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardRecord.swift; sourceTree = "<group>"; };
 		ACD854A22277A2ED00683591 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ACEDA91F22D23C8900F4472D /* CellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellProtocol.swift; sourceTree = "<group>"; };
+		ACEDA92122D23CF700F4472D /* InfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoCell.xib; sourceTree = "<group>"; };
+		ACEDA92322D23DF600F4472D /* InfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
+		ACEDA92522D2420100F4472D /* DescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionCell.xib; sourceTree = "<group>"; };
+		ACEDA92722D2422C00F4472D /* DescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionCell.swift; sourceTree = "<group>"; };
 		F79474F32278F3E000F05D9B /* CreateAndEditCard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateAndEditCard.storyboard; sourceTree = "<group>"; };
 		F79474F52278F3EE00F05D9B /* CreateAndEditCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAndEditCardViewController.swift; sourceTree = "<group>"; };
 		F79474F72278F3FC00F05D9B /* DateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateService.swift; sourceTree = "<group>"; };
@@ -189,6 +199,7 @@
 		AC8F8B48226B947C00EDD8E4 /* DetailInformationAboutCard */ = {
 			isa = PBXGroup;
 			children = (
+				ACEDA91E22D23C5C00F4472D /* Cell */,
 				AC85D34D227B09B000B85C5E /* ActionsTableViewControllerAboutCard.swift */,
 				AC8F8B4A226B947C00EDD8E4 /* ViewControllerDetailInformationAboutCard.swift */,
 				ACB0C5382279CA3400463D15 /* QRImageViewController.swift */,
@@ -220,6 +231,34 @@
 				F79474F52278F3EE00F05D9B /* CreateAndEditCardViewController.swift */,
 			);
 			path = CreateAndEditCard;
+			sourceTree = "<group>";
+		};
+		ACEDA91C22D23C1700F4472D /* DescriptionCell */ = {
+			isa = PBXGroup;
+			children = (
+				ACEDA92522D2420100F4472D /* DescriptionCell.xib */,
+				ACEDA92722D2422C00F4472D /* DescriptionCell.swift */,
+			);
+			path = DescriptionCell;
+			sourceTree = "<group>";
+		};
+		ACEDA91D22D23C2F00F4472D /* InfoCell */ = {
+			isa = PBXGroup;
+			children = (
+				ACEDA92122D23CF700F4472D /* InfoCell.xib */,
+				ACEDA92322D23DF600F4472D /* InfoCell.swift */,
+			);
+			path = InfoCell;
+			sourceTree = "<group>";
+		};
+		ACEDA91E22D23C5C00F4472D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				ACEDA91D22D23C2F00F4472D /* InfoCell */,
+				ACEDA91C22D23C1700F4472D /* DescriptionCell */,
+				ACEDA91F22D23C8900F4472D /* CellProtocol.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		F78B49A8226509ED007B1873 /* Resources */ = {
@@ -349,11 +388,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC54F53822875E650021B575 /* MyCards.storyboard in Resources */,
+				ACEDA92222D23CF700F4472D /* InfoCell.xib in Resources */,
 				AC2D6F6B226B95F1007184DC /* DetailOfCard.storyboard in Resources */,
 				AC46C9CC2264FB3B0049E653 /* LaunchScreen.storyboard in Resources */,
 				F79474F42278F3E000F05D9B /* CreateAndEditCard.storyboard in Resources */,
 				AC8F8B51226B947C00EDD8E4 /* CardView.xib in Resources */,
 				ACD854A32277A2ED00683591 /* Assets.xcassets in Resources */,
+				ACEDA92622D2420100F4472D /* DescriptionCell.xib in Resources */,
 				AC46C9C72264FB390049E653 /* Main.storyboard in Resources */,
 				941F3566227AFD8100BEB749 /* CardTableCell.xib in Resources */,
 				ACAC35F722840E6400D0948E /* UserHeaderTableViewCell.xib in Resources */,
@@ -443,6 +484,7 @@
 				AC047E9022CFCD4100289B8B /* CardNetworkService.swift in Sources */,
 				AC047E9222CFD0B700289B8B /* UrlFromAPI.swift in Sources */,
 				ACA23A602285AC430085B7AB /* AppDelegate.swift in Sources */,
+				ACEDA92022D23C8900F4472D /* CellProtocol.swift in Sources */,
 				F79474FC2278F41900F05D9B /* ImageServiceProtocol.swift in Sources */,
 				F79474F82278F3FC00F05D9B /* DateService.swift in Sources */,
 				F7CB803C22703828004B5BAC /* DBServiceProtocol.swift in Sources */,
@@ -453,6 +495,7 @@
 				F79474FA2278F40A00F05D9B /* ImageService.swift in Sources */,
 				941F3567227AFD8500BEB749 /* UserHeaderTableViewCell.swift in Sources */,
 				ACD854A022779E2F00683591 /* CardRecord.swift in Sources */,
+				ACEDA92822D2422C00F4472D /* DescriptionCell.swift in Sources */,
 				F7CB804122703845004B5BAC /* (null) in Sources */,
 				AC54F53422875D020021B575 /* MyCardsViewController.swift in Sources */,
 				AC85D350227B09C800B85C5E /* ActionsTableViewControllerCreateAndEdit.swift in Sources */,
@@ -461,6 +504,7 @@
 				AC46C9C42264FB390049E653 /* MainAndCategoriesViewController.swift in Sources */,
 				AC54F53622875DEE0021B575 /* MyCardsViewModel.swift in Sources */,
 				ACAC35F622840E6400D0948E /* MainAndCategoriesViewModel.swift in Sources */,
+				ACEDA92422D23DF600F4472D /* InfoCell.swift in Sources */,
 				F79474F62278F3EF00F05D9B /* CreateAndEditCardViewController.swift in Sources */,
 				ACD8549F22779E2F00683591 /* CategoryRecord.swift in Sources */,
 				ACD8549822779DE200683591 /* String.swift in Sources */,

@@ -36,9 +36,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         myCardsViewController.viewModelOfCategories = MyCardsViewModel<CategoryRecord>(realmService: DBService<CategoryRecord>())
         let navigationControllerOfMyCards = UINavigationController(rootViewController: myCardsViewController)
 
-        navigationControllerOfMainScreen.tabBarItem	= UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
-        navigationControllerOfMyCards.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 1)
+        navigationControllerOfMainScreen.tabBarItem = UITabBarItem(title: "Визитки", image: UIImage(named: .allCards), tag: 0)
+        navigationControllerOfMyCards.tabBarItem = UITabBarItem(title: "My Cards", image: UIImage(named: .myCards), tag: 1)
 
+        UITabBar.appearance().tintColor = .black
+        UINavigationBar.appearance().tintColor = .black
         let tabbarController = UITabBarController()
         tabbarController.viewControllers = [navigationControllerOfMainScreen, navigationControllerOfMyCards]
         window?.rootViewController = tabbarController
@@ -80,9 +82,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             navigationControllerOfMainScreen.pushViewController(createAndEditCardViewControllerPush, animated: true)
         }
 
-        navigationControllerOfMainScreen.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
-        navigationControllerOfMyCards.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 1)
+        navigationControllerOfMainScreen.tabBarItem = UITabBarItem(title: "Визитки", image: UIImage(contentsOfFile: "AllCards"), tag: 0)
+        navigationControllerOfMyCards.tabBarItem = UITabBarItem(title: "Мои", image: UIImage(contentsOfFile: "MyCards"), tag: 1)
 
+        UITabBar.appearance().tintColor = .black
+        UINavigationBar.appearance().tintColor = .black
         let tabbarController = UITabBarController()
         tabbarController.viewControllers = [navigationControllerOfMainScreen, navigationControllerOfMyCards]
         window?.rootViewController = tabbarController

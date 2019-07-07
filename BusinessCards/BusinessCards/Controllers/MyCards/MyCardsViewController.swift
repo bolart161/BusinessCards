@@ -131,7 +131,7 @@ extension MyCardsViewController: UITableViewDelegate, UITableViewDataSource {
         var key = [CategoryRecord](items.keys)
         key = key.sorted { $0.name < $1.name }
         let category = key[section]
-        let cards = [CardRecord](items[category] ?? []) //viewModelOfCards.get(field: .category, value: key[section])
+        let cards = [CardRecord](items[category] ?? [])
         guard isSectionOpened(section) else {
             guard cards.isEmpty else {
                 return 1
@@ -157,8 +157,8 @@ extension MyCardsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let header = view as? UITableViewHeaderFooterView {
-            header.backgroundView?.backgroundColor = UIColor.blue
-            header.textLabel?.textColor = UIColor.white
+            header.backgroundView?.backgroundColor = UIColor.white
+            header.textLabel?.font = UIFont(name: "Avenir", size: 20)
         }
     }
 
@@ -204,8 +204,8 @@ extension MyCardsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didEndDisplayingHeaderView view: UIView, forSection section: Int) {
         if let header = view as? UITableViewHeaderFooterView {
-            header.backgroundView?.backgroundColor = UIColor.blue
-            header.textLabel?.textColor = UIColor.white
+            header.backgroundView?.backgroundColor = UIColor.white
+            header.textLabel?.font = UIFont(name: "Avenir", size: 20)
         }
     }
 
@@ -216,7 +216,7 @@ extension MyCardsViewController: UITableViewDelegate, UITableViewDataSource {
         var key = [CategoryRecord](items.keys)
         key = key.sorted { $0.name < $1.name }
         let category = key[indexPath.section]
-        let cards = [CardRecord](items[category] ?? []) //viewModelOfCards.get(field: .category, value: category)
+        let cards = [CardRecord](items[category] ?? [])
         viewControllerDetailInformationAboutCard?.cardRecord = cards[indexPath.row]
         guard let pViewControllerDetailInformation = viewControllerDetailInformationAboutCard else { return }
         navigationController?.pushViewController(pViewControllerDetailInformation, animated: true)

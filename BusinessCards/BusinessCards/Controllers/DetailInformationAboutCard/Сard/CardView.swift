@@ -38,8 +38,7 @@ class CardView: UIView {
         companyLabel.text = card.company ?? ""
 
         guard let imagePath = card.imagePath else {
-            // swiftlint:disable:next discouraged_object_literal
-            imageView.image = #imageLiteral(resourceName: "icon_64x64")
+            imageView.image = UIImage(named: .notFoundImage)
             return
         }
         if !imagePath.isEmpty {

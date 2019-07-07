@@ -21,4 +21,9 @@ extension String {
     static let imagePath = "imagePath"
     static let website = "website"
     static let descriptionText = "descriptionText"
+    static let allCards = "AllCards"
+    static let myCards = "MyCards"
+    static let QRIcon = "QRIcon"
+    static let rightArrow = "RightArrow"
+    static let notFoundImage = "NotFoundImage"
 }

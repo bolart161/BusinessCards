@@ -10,7 +10,6 @@ import Reusable
 import UIKit
 
 class CardTableCell: UITableViewCell, NibReusable {
-    @IBOutlet private var categoryLabel: UILabel!
     @IBOutlet private var nameLabel: UILabel!
     @IBOutlet private var numberLabel: UILabel!
     @IBOutlet private var companyLabel: UILabel!
@@ -20,10 +19,15 @@ class CardTableCell: UITableViewCell, NibReusable {
         self.nameLabel.text = card.name + " " + card.surname
         self.numberLabel.text = card.phone
         self.companyLabel.text = card.company ?? ""
+        self.nameLabel.layer.cornerRadius = 5
+        self.nameLabel.layer.masksToBounds = true
+        self.companyLabel.layer.cornerRadius = 5
+        self.companyLabel.layer.masksToBounds = true
+        self.numberLabel.layer.cornerRadius = 5
+        self.numberLabel.layer.masksToBounds = true
 
         guard let imagePath = card.imagePath else {
-            // swiftlint:disable:next discouraged_object_literal
-            avatarImageView.image = #imageLiteral(resourceName: "icon_64x64")
+            avatarImageView.image = UIImage(named: .notFoundImage)
             return
         }
         if !imagePath.isEmpty {

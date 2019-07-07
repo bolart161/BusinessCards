@@ -120,7 +120,7 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
         createToolbar()
         makeTextViewBorders()
         fillInfo()
-        let moreActionButton = UIBarButtonItem(title: "...", style: .plain, target: self, action: #selector(tappedMore))
+        let moreActionButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(tappedMore))
         navigationItem.rightBarButtonItem = moreActionButton
         NotificationCenter.default.addObserver(self, selector: #selector(keyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
