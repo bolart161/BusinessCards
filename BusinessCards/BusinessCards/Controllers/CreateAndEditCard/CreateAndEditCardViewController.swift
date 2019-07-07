@@ -26,10 +26,12 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
     private let cards = DBService<CardRecord>()
     private let categories = DBService<CategoryRecord>()
     private lazy var categoriesList = DBService<CategoryRecord>().getAll(sortBy: .name, ascending: true)
+    private var cardNetworkService = CardNetworkService()
     private var card: CardRecord?
     private var category: CategoryRecord?
     private var isMy: Bool = false
     private var imageWasChanged: Bool = false
+    private var url: String = ""
 
     @IBAction private func addImageButton(_ sender: Any) {
         let image = UIImagePickerController()
@@ -169,6 +171,10 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
         isMyFlag(isMy: card.isMy)
     }
 
+    func setUrl(url: String) {
+        self.url = url
+    }
+
     func isMyFlag(isMy: Bool) {
         self.isMy = isMy
     }
@@ -177,7 +183,22 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
         self.category = category
     }
 
+    // swiftlint:disable:next cyclomatic_complexity 
     private func fillInfo() {
+        if !self.url.isEmpty {
+            cardNetworkService.getCardFromAPI(url: self.url) { cardFromAPI in
+                self.middleNameField.text = cardFromAPI.value.middleName
+                self.companyField.text = cardFromAPI.value.company
+                self.addressField.text = cardFromAPI.value.address
+                self.emailField.text = cardFromAPI.value.email
+                self.websiteField.text = cardFromAPI.value.website
+                self.nameField.text = cardFromAPI.value.name
+                self.surnameField.text = cardFromAPI.value.surname
+                self.phoneField.text = cardFromAPI.value.phone
+                self.url = ""
+            }
+            return
+        }
         if let category = self.category {
             categoryField.text = category.name
         }

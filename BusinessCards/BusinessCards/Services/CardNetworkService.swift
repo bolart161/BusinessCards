@@ -18,6 +18,7 @@ class CardNetworkService {
             "phone": card.phone,
             "website": card.website ?? "",
             "address": card.address ?? "",
+            "email": card.email ?? "",
             "company": card.company ?? ""
         ]
 
@@ -28,6 +29,20 @@ class CardNetworkService {
                 let response = try? jsonDecoder.decode(UrlFromAPI.self, from: data)
                 guard let cardUrl = response else { return }
                 completionHandler(cardUrl)
+            case let .failure(error):
+                print("Error: \(error)")
+            }
+        }
+    }
+
+    func getCardFromAPI(url: String, _ completitionHandler: @escaping ((CardForAPI) -> Void)) {
+        request(url).responseData {
+            switch $0.result {
+            case let .success(data):
+                let jsonDecoder = JSONDecoder()
+                let response = try? jsonDecoder.decode(CardForAPI.self, from: data)
+                guard let card = response else { return }
+                completitionHandler(card)
             case let .failure(error):
                 print("Error: \(error)")
             }

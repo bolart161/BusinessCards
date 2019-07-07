@@ -13,6 +13,7 @@ class ActionsTableViewControllerCreateAndEdit: UITableViewController {
     var card = CardRecord()
 
     private func readQR() {
+        // Open camera
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
