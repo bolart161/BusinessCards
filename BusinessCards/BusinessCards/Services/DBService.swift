@@ -60,7 +60,7 @@ class DBService<T: Object>: DBServiceProtocol {
         if T.self == CardRecord.self {
             fields = [.name, .surname, .middleName, .phone, .company, .email, .address, .website, .descriptionText]
         } else if T.self == CategoryRecord.self {
-            fields = [.name, .isMy]
+            fields = [.name]
         } else {
             fatalError("Wrong object type")
         }
