@@ -12,7 +12,7 @@ import RealmSwift
 protocol DBServiceProtocol {
     associatedtype ObjectType: Object
     func get(field: String, value: Any, sortBy: String?, ascending: Bool) -> Results<ObjectType>
-    func get(field: String, contains: String, sortBy: String?, ascending: Bool) -> Results<ObjectType>
+    func get(contains: String, sortBy: String?, ascending: Bool) -> Results<ObjectType>
     func getAll(sortBy: String?, ascending: Bool) -> Results<ObjectType>
     func add(_ data: ObjectType)
     func edit(data: ObjectType, value: [String: Any])
