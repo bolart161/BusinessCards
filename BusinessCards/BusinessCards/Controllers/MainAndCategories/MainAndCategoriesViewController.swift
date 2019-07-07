@@ -41,12 +41,8 @@ class MainAndCategoriesViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAlertToAddCategory))
         viewModelOfCategories.onCardsChanged = {
             guard let key = $0.last else { return }
-            let cards = self.viewModelOfCards.get(field: .category, value: key)
-            var res = [CardRecord]()
-            for value in cards where !value.isMy {
-                res.append(value)
-            }
-            self.items[key] = res
+            let res = self.viewModelOfCards.get(field: .category, value: key)
+            self.items[key] = Array(res)
         }
 
         tableView.do {
@@ -105,7 +101,7 @@ private extension MainAndCategoriesViewController {
         guard !categoryName.isEmpty else {
             return
         }
-        let category = CategoryRecord(name: categoryName)
+        let category = CategoryRecord(name: categoryName, isMy: false)
         guard !(items.keys.contains { category.name == $0.name }) else {
             return
         }
@@ -116,13 +112,9 @@ private extension MainAndCategoriesViewController {
 
     private func fillTableView() {
         items.removeAll()
-        for item in viewModelOfCategories.getAll(sotrBy: .name) {
-            let cards = viewModelOfCards.get(field: .category, value: item)
-            var res = [CardRecord]()
-            for value in cards where !value.isMy {
-                res.append(value)
-            }
-            items[item] = res
+        for item in viewModelOfCategories.get(field: .isMy, value: false, sortBy: .name) {
+            let res = viewModelOfCards.get(field: .category, value: item)
+            items[item] = Array(res)
         }
     }
 }
@@ -249,12 +241,8 @@ extension MainAndCategoriesViewController: UISearchResultsUpdating, UISearchBarD
         }
         items.removeAll()
         for item in viewModelOfCategories.getForSearch(contains: text) {
-            let cards = viewModelOfCards.get(field: .category, value: item)
-            var res = [CardRecord]()
-            for value in cards where !value.isMy {
-                res.append(value)
-            }
-            items[item] = res
+            let res = viewModelOfCards.get(field: .category, value: item)
+            items[item] = Array(res)
         }
     }
 }

@@ -10,7 +10,6 @@ import RealmSwift
 
 class CardRecord: Object {
     @objc dynamic var category: CategoryRecord?
-    @objc dynamic var isMy = false
     @objc dynamic var name = ""
     @objc dynamic var surname = ""
     @objc dynamic var middleName: String?
@@ -23,12 +22,11 @@ class CardRecord: Object {
     @objc dynamic var descriptionText: String?
     @objc dynamic var created = Date()
 
-    convenience init(name: String, surname: String, phone: String, isMy: Bool, category: CategoryRecord?, info: [String: String] = [:]) {
+    convenience init(name: String, surname: String, phone: String, category: CategoryRecord?, info: [String: String] = [:]) {
         self.init()
         self.name = name
         self.surname = surname
         self.phone = phone
-        self.isMy = isMy
         self.category = category
         if !info.isEmpty {
             self.setValuesForKeys(info)
