@@ -22,7 +22,11 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
     @IBOutlet private var addressField: UITextField!
     @IBOutlet private var websiteField: UITextField!
     @IBOutlet private var descriptionField: UITextView!
-    @IBOutlet private var addImageButtonOutlet: UIButton!
+    @IBOutlet private var addImageButtonOutlet: UIButton! {
+            didSet {
+                addImageButtonOutlet.imageView?.contentMode = .scaleAspectFill
+            }
+    }
     private let categoryPicker = UIPickerView()
     private let cards = DBService<CardRecord>()
     private let categories = DBService<CategoryRecord>()
@@ -36,17 +40,17 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
     }
     private var card: CardRecord?
     private var category: CategoryRecord?
+    private var cardNetworkService = CardNetworkService()
+    private var imagePicker = UIImagePickerController()
     private var imageWasChanged: Bool = false
+    private var url: String = ""
 
     @IBAction private func addImageButton(_ sender: Any) {
-        let image = UIImagePickerController()
-        image.delegate = self
-        image.sourceType = UIImagePickerController.SourceType.photoLibrary
-        image.allowsEditing = false
-        self.present(image, animated: true)
+        self.present(self.imagePicker, animated: true)
     }
 
     @IBAction private func saveButton(_ sender: Any) {
+        // check necessary fields
         // swiftlint:disable:next empty_string
         if nameField.text == "" || surnameField.text == "" || phoneField.text == "" || categoryField.text == "" {
             let alert = UIAlertController(title: "Невозможно сохранить изменения", message: "Заполните все обязательные поля", preferredStyle: .alert)
@@ -57,13 +61,35 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
         }
 
         var textInfo = getInfo()
-        var category: CategoryRecord
-        if let categoryName = categoryField.text, let categoryRecord = categories.get(field: .name, value: categoryName).first {
-            category = categoryRecord
-        } else {
-            fatalError("No category with the same name: \(String(describing: categoryField.text))")
+
+        // check phoneField.text is a number
+        guard let phone = textInfo[.phone] else { return }
+        if !CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: phone)) {
+            let alert = UIAlertController(title: "Некорректный номер телефона", message: "Допустимы только цифры", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            return
         }
 
+        // check category
+        // swiftlint:disable:next implicitly_unwrapped_optional
+        var category: CategoryRecord!
+        guard let categoryName = categoryField.text else { return }
+        if let categoryRecord = categories.get(field: .name, value: categoryName).first {
+            category = categoryRecord
+        } else {
+            let alert = UIAlertController(title: "Категории с таким именем не существует", message: "Создать?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Создать", style: .default) { _ in
+                category = CategoryRecord(name: categoryName)
+                self.categories.add(category)
+            }
+            )
+            self.present(alert, animated: true)
+            return
+        }
+
+        // if edit card
         if let card = self.card {
             let alert = UIAlertController(title: "Сохранить изменения?", message: "Данное действие нельзя отменить", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Отменить", style: .destructive, handler: nil))
@@ -97,6 +123,7 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
     override func viewDidLoad() {
         super.viewDidLoad()
         createCategoryPicker()
+        configImagePicker()
         createToolbar()
         makeTextViewBorders()
         fillInfo()
@@ -139,6 +166,12 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
         self.categoryField.inputView = categoryPicker
     }
 
+    private func configImagePicker() {
+        imagePicker.delegate = self
+        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+        imagePicker.allowsEditing = false
+    }
+
     private func createToolbar() {
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
@@ -174,12 +207,31 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
         self.card = card
     }
 
+    func setUrl(url: String) {
+        self.url = url
+    }
+  
     func setCategory(category: CategoryRecord) {
         self.category = category
         self.isMy = category.isMy
     }
 
+    // swiftlint:disable:next cyclomatic_complexity 
     private func fillInfo() {
+        if !self.url.isEmpty {
+            cardNetworkService.getCardFromAPI(url: self.url) { cardFromAPI in
+                self.middleNameField.text = cardFromAPI.value.middleName
+                self.companyField.text = cardFromAPI.value.company
+                self.addressField.text = cardFromAPI.value.address
+                self.emailField.text = cardFromAPI.value.email
+                self.websiteField.text = cardFromAPI.value.website
+                self.nameField.text = cardFromAPI.value.name
+                self.surnameField.text = cardFromAPI.value.surname
+                self.phoneField.text = cardFromAPI.value.phone
+                self.url = ""
+            }
+            return
+        }
         if let category = self.category {
             categoryField.text = category.name
         }
@@ -216,26 +268,26 @@ class CreateAndEditCardViewController: UIViewController, UINavigationControllerD
 
     private func getInfo() -> [String: String] {
         var textInfo: [String: String] = [:]
-        textInfo[.name] = nameField.text
-        textInfo[.surname] = surnameField.text
-        textInfo[.phone] = phoneField.text
+        textInfo[.name] = nameField.text?.trimmingCharacters(in: .whitespaces)
+        textInfo[.surname] = surnameField.text?.trimmingCharacters(in: .whitespaces)
+        textInfo[.phone] = phoneField.text?.trimmingCharacters(in: .whitespaces)
 
-        if let middleName = middleNameField.text, !middleName.isEmpty {
+        if let middleName = middleNameField.text?.trimmingCharacters(in: .whitespaces), !middleName.isEmpty {
             textInfo[.middleName] = middleName
         }
-        if let email = emailField.text, !email.isEmpty {
+        if let email = emailField.text?.trimmingCharacters(in: .whitespaces), !email.isEmpty {
             textInfo[.email] = email
         }
-        if let company = companyField.text, !company.isEmpty {
+        if let company = companyField.text?.trimmingCharacters(in: .whitespaces), !company.isEmpty {
             textInfo[.company] = company
         }
-        if let address = addressField.text, !address.isEmpty {
+        if let address = addressField.text?.trimmingCharacters(in: .whitespaces), !address.isEmpty {
             textInfo[.address] = address
         }
-        if let website = websiteField.text, !website.isEmpty {
+        if let website = websiteField.text?.trimmingCharacters(in: .whitespaces), !website.isEmpty {
             textInfo[.website] = website
         }
-        if let description = descriptionField.text, !description.isEmpty {
+        if let description = descriptionField.text?.trimmingCharacters(in: .whitespaces), !description.isEmpty {
             textInfo[.descriptionText] = description
         }
         if imageWasChanged, let image = addImageButtonOutlet.imageView?.image {

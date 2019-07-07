@@ -18,7 +18,7 @@ class ViewControllerDetailInformationAboutCard: UIViewController, UITableViewDel
 
     private enum CardTitles: Int, CaseIterable {
         case name = 0
-        case surname, middleName, phone, category, company, email, address, website, created, description
+        case surname, middleName, phone, category, company, email, address, website, description
     }
 
     override func viewDidLoad() {
@@ -41,9 +41,8 @@ class ViewControllerDetailInformationAboutCard: UIViewController, UITableViewDel
         var stringForQR = ""
 
         cardNetworkService.getUrlForCard(url: "http://bolart.ru:3013/cards", card: cardRecord) { url in
-            stringForQR = url.url
-            print("QR String: " + stringForQR)
-
+            stringForQR = "businessCards://" + url.url
+            print(stringForQR)
             let data = stringForQR.data(using: String.Encoding.utf8)
             guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else { return }
             qrFilter.setValue(data, forKey: "inputMessage")
@@ -91,9 +90,9 @@ extension ViewControllerDetailInformationAboutCard: UIPopoverPresentationControl
 
 extension ViewControllerDetailInformationAboutCard: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 12
+        return 10
     }
-    // swiftlint:disable:next function_body_length cyclomatic_complexity
+    // swiftlint:disable:next cyclomatic_complexity
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
 
@@ -125,13 +124,6 @@ extension ViewControllerDetailInformationAboutCard: UITableViewDataSource {
         case .website:
             title = "Сайт:"
             value = self.cardRecord.website
-        case .created:
-            title = "Создана:"
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-
-            let date = dateFormatter.string(from: self.cardRecord.created)
-            value = date
         case .description:
             title = "Описание:"
             value = self.cardRecord.descriptionText
