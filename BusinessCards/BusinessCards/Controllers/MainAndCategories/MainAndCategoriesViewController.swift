@@ -159,7 +159,20 @@ extension MainAndCategoriesViewController: UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var key = [CategoryRecord](items.keys)
         key = key.sorted { $0.name < $1.name }
-        return key[section].name
+        let count = items[key[section]]?.count ?? 0
+        var countStr: String = ""
+        switch count % 10 {
+        case 1:
+            countStr = "карта"
+        case 2, 3, 4:
+            countStr = "карты"
+        case 0, 5, 6, 7, 8, 9:
+            countStr = "карт"
+        default:
+            countStr = ""
+        }
+
+        return key[section].name + " (" + String(count) + " " + countStr + ")"
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
