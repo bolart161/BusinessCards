@@ -23,13 +23,18 @@ class UserHeaderTableViewCell: UITableViewHeaderFooterView, NibReusable {
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapAction)))
-        addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(longTapAction)))
+        commonInit()
     }
 
     @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+    
+    func commonInit() {
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapAction)))
+        addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(longTapAction)))
     }
     
     @objc private func tapAction() {
