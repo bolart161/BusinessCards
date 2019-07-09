@@ -44,10 +44,9 @@ class MainAndCategoriesViewController: UIViewController {
             self.items[key] = Array(res)
         }
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
-        let nib = UINib(nibName: "UserHeaderTableViewCell", bundle: Bundle.main)
         self.tableView.do {
             $0.register(cellType: CardTableCell.self)
-            $0.register(nib, forHeaderFooterViewReuseIdentifier: "UserHeaderTableViewCell")
+            $0.register(headerFooterViewType: UserHeaderTableViewCell.self)
         }
     }
 
@@ -177,7 +176,7 @@ extension MainAndCategoriesViewController: UITableViewDelegate, UITableViewDataS
 //    }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "UserHeaderTableViewCell") as? UserHeaderTableViewCell
+        let header = tableView.dequeueReusableHeaderFooterView(UserHeaderTableViewCell.self)
         var key = [CategoryRecord](items.keys)
         key = key.sorted { $0.name < $1.name }
         let count = items[key[section]]?.count ?? 0
