@@ -6,9 +6,15 @@
 //  Copyright © 2019 Artem Boltunov. All rights reserved.
 //
 
+import Reusable
 import UIKit
 
-class UserHeaderTableViewCell: UITableViewHeaderFooterView {
+class UserHeaderTableViewCell: UITableViewHeaderFooterView, NibReusable {
+    // swiftlint:disable:next private_outlet
+    @IBOutlet var titleText: UILabel!
+    // swiftlint:disable:next private_outlet
+    @IBOutlet var countText: UILabel!
+
     var didTapped = false
     // swiftlint:disable:next implicitly_unwrapped_optional
     var tapHandler: ((UserHeaderTableViewCell) -> Void)!
@@ -21,6 +27,11 @@ class UserHeaderTableViewCell: UITableViewHeaderFooterView {
         addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(longTapAction)))
     }
 
+    @available(*, unavailable)
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     @objc private func tapAction() {
         tapHandler?(self)
     }
@@ -29,8 +40,8 @@ class UserHeaderTableViewCell: UITableViewHeaderFooterView {
         longTapHandler?(self)
     }
 
-    @available(*, unavailable)
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func setHeader(title: String, count: Int) {
+        titleText.text = title
+        countText.text = String(count)
     }
 }

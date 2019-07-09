@@ -175,43 +175,46 @@ extension MyCardsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? UserHeaderTableViewCell
-        header?.tapHandler = { [unowned self] _ in
-            self.changeSectionStatus(section)
-        }
-
-        header?.longTapHandler = { [unowned self] _ in
-            var key = [CategoryRecord](self.items.keys)
-            key = key.sorted { $0.name < $1.name }
-            let alert = UIAlertController(title: key[section].name, message: "", preferredStyle: .alert)
-            let addCardAction = UIAlertAction(title: "Добавить карту", style: .default) { _ in
-                let createStoryboard = UIStoryboard(name: "CreateAndEditCard", bundle: nil)
-                let createAndEditCardViewController = createStoryboard.instantiateViewController(withIdentifier: "createAndEditViewControllerID")
-                    as? CreateAndEditCardViewController
-                guard let pCreateAndEditCardViewController = createAndEditCardViewController else { return }
-                pCreateAndEditCardViewController.setCategory(category: key[section])
-                self.navigationController?.pushViewController(pCreateAndEditCardViewController, animated: true)
-                self.tableView.reloadSections([section], with: .automatic)
-            }
-            let deleteAction = UIAlertAction(title: "Удалить категорию", style: .default) { _ in
-                self.viewModelOfCategories.delete(data: key[section])
-                // swiftlint:disable:next force_unwrapping
-                self.items.remove(at: self.items.index(forKey: key[section])!)
-                self.tableView.reloadData()
-                print(self.viewModelOfCategories.getAll(sotrBy: .name))
-            }
-            alert.addAction(addCardAction)
-            alert.addAction(deleteAction)
-            self.present(alert, animated: true)
-        }
+//        header?.tapHandler = { [unowned self] _ in
+//            self.changeSectionStatus(section)
+//        }
+//
+//        header?.longTapHandler = { [unowned self] _ in
+//            var key = [CategoryRecord](self.items.keys)
+//            key = key.sorted { $0.name < $1.name }
+//            let alert = UIAlertController(title: key[section].name, message: "", preferredStyle: .alert)
+//            let addCardAction = UIAlertAction(title: "Добавить карту", style: .default) { _ in
+//                let createStoryboard = UIStoryboard(name: "CreateAndEditCard", bundle: nil)
+//                let createAndEditCardViewController = createStoryboard.instantiateViewController(withIdentifier: "createAndEditViewControllerID")
+//                    as? CreateAndEditCardViewController
+//                guard let pCreateAndEditCardViewController = createAndEditCardViewController else { return }
+//                pCreateAndEditCardViewController.setCategory(category: key[section])
+//                self.navigationController?.pushViewController(pCreateAndEditCardViewController, animated: true)
+//                self.tableView.reloadSections([section], with: .automatic)
+//            }
+//            let deleteAction = UIAlertAction(title: "Удалить категорию", style: .default) { _ in
+//                self.viewModelOfCategories.delete(data: key[section])
+//                // swiftlint:disable:next force_unwrapping
+//                self.items.remove(at: self.items.index(forKey: key[section])!)
+//                self.tableView.reloadData()
+//                print(self.viewModelOfCategories.getAll(sotrBy: .name))
+//            }
+//            alert.addAction(addCardAction)
+//            alert.addAction(deleteAction)
+//            self.present(alert, animated: true)
+//        }
         return header
     }
-
-    func tableView(_ tableView: UITableView, didEndDisplayingHeaderView view: UIView, forSection section: Int) {
-        if let header = view as? UITableViewHeaderFooterView {
-            header.backgroundView?.backgroundColor = UIColor.white
-            header.textLabel?.font = UIFont(name: "Avenir", size: 20)
-        }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 52
     }
+
+//    func tableView(_ tableView: UITableView, didEndDisplayingHeaderView view: UIView, forSection section: Int) {
+//        if let header = view as? UITableViewHeaderFooterView {
+//            header.backgroundView?.backgroundColor = UIColor.white
+//            header.textLabel?.font = UIFont(name: "Avenir", size: 20)
+//        }
+//    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let mainStoryboard = UIStoryboard(name: "DetailOfCard", bundle: nil)

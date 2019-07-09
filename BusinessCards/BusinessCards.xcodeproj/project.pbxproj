@@ -129,9 +129,9 @@
 		941F3561227AFA9000BEB749 /* Card(Egorov Maxim) */ = {
 			isa = PBXGroup;
 			children = (
-				ACAC35F522840E6400D0948E /* UserHeaderTableViewCell.xib */,
 				941F3562227AFA9000BEB749 /* CardTableCell.swift */,
 				941F3563227AFA9000BEB749 /* CardTableCell.xib */,
+				ACAC35F522840E6400D0948E /* UserHeaderTableViewCell.xib */,
 				941F3564227AFA9000BEB749 /* UserHeaderTableViewCell.swift */,
 			);
 			path = "Card(Egorov Maxim)";
@@ -450,7 +450,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${PODS_ROOT}/SwiftLint/swiftlint\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#${PODS_ROOT}/SwiftLint/swiftlint\n";
 		};
 		B16761790B410B6147FE78D9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

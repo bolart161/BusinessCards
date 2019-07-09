@@ -5,37 +5,56 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner">
-            <connections>
-                <outlet property="contentView" destination="RKa-ct-JAu" id="ZeA-Cp-agc"/>
-                <outlet property="titleLabel" destination="j4p-w2-OZw" id="RPb-c9-qgD"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleAspectFit" id="RKa-ct-JAu" customClass="UserHeaderTableViewCell" customModule="BusinessCards" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="300" height="52"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4p-w2-OZw">
-                    <rect key="frame" x="16" y="8" width="268" height="36"/>
-                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="26"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fUV-uf-tSZ">
+                    <rect key="frame" x="0.0" y="0.0" width="300" height="52"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Моя категория" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4p-w2-OZw">
+                            <rect key="frame" x="5" y="5" width="213" height="42"/>
+                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="92 карты" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HmG-4g-OmA">
+                            <rect key="frame" x="223" y="5" width="72" height="42"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="HmG-4g-OmA" firstAttribute="leading" secondItem="j4p-w2-OZw" secondAttribute="trailing" constant="5" id="50b-Tf-8ZW"/>
+                        <constraint firstAttribute="trailing" secondItem="HmG-4g-OmA" secondAttribute="trailing" constant="5" id="QGp-7l-8NR"/>
+                        <constraint firstItem="j4p-w2-OZw" firstAttribute="top" secondItem="fUV-uf-tSZ" secondAttribute="top" constant="5" id="Usz-vK-m5M"/>
+                        <constraint firstAttribute="bottom" secondItem="j4p-w2-OZw" secondAttribute="bottom" constant="5" id="ZuG-JP-TkG"/>
+                        <constraint firstItem="HmG-4g-OmA" firstAttribute="top" secondItem="fUV-uf-tSZ" secondAttribute="top" constant="5" id="lno-En-Pzm"/>
+                        <constraint firstItem="j4p-w2-OZw" firstAttribute="leading" secondItem="fUV-uf-tSZ" secondAttribute="leading" constant="5" id="vqk-TZ-JVY"/>
+                        <constraint firstAttribute="bottom" secondItem="HmG-4g-OmA" secondAttribute="bottom" constant="5" id="xmi-tF-Xoi"/>
+                    </constraints>
+                </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <accessibility key="accessibilityConfiguration" identifier="UserHeaderTableViewCell"/>
             <constraints>
-                <constraint firstItem="j4p-w2-OZw" firstAttribute="centerY" secondItem="RKa-ct-JAu" secondAttribute="centerY" id="OOP-Nu-NM6"/>
-                <constraint firstItem="Gno-YS-bHU" firstAttribute="trailing" secondItem="j4p-w2-OZw" secondAttribute="trailing" constant="16" id="fvp-dV-9Iw"/>
-                <constraint firstItem="j4p-w2-OZw" firstAttribute="leading" secondItem="Gno-YS-bHU" secondAttribute="leading" constant="16" id="yEr-Ge-tMJ"/>
+                <constraint firstAttribute="bottom" secondItem="fUV-uf-tSZ" secondAttribute="bottom" id="B5S-Gt-IMI"/>
+                <constraint firstAttribute="trailing" secondItem="fUV-uf-tSZ" secondAttribute="trailing" id="BbQ-gZ-Dq6"/>
+                <constraint firstItem="fUV-uf-tSZ" firstAttribute="leading" secondItem="RKa-ct-JAu" secondAttribute="leading" id="pbJ-N7-0Wq"/>
+                <constraint firstItem="fUV-uf-tSZ" firstAttribute="top" secondItem="RKa-ct-JAu" secondAttribute="top" id="sxf-Rf-WO3"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="Gno-YS-bHU"/>
-            <point key="canvasLocation" x="104.8" y="-191.6041979010495"/>
+            <connections>
+                <outlet property="countText" destination="HmG-4g-OmA" id="8gM-qL-weq"/>
+                <outlet property="titleText" destination="j4p-w2-OZw" id="yfC-Ah-JiE"/>
+            </connections>
+            <point key="canvasLocation" x="104" y="-191.6041979010495"/>
         </view>
     </objects>
 </document>

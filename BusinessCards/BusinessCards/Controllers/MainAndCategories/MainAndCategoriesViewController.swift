@@ -43,10 +43,11 @@ class MainAndCategoriesViewController: UIViewController {
             let res = self.viewModelOfCards.get(field: .category, value: key)
             self.items[key] = Array(res)
         }
-
-        tableView.do {
+        self.tableView.translatesAutoresizingMaskIntoConstraints = false
+        let nib = UINib(nibName: "UserHeaderTableViewCell", bundle: Bundle.main)
+        self.tableView.do {
             $0.register(cellType: CardTableCell.self)
-            $0.register(UserHeaderTableViewCell.self, forHeaderFooterViewReuseIdentifier: "header")
+            $0.register(nib, forHeaderFooterViewReuseIdentifier: "UserHeaderTableViewCell")
         }
     }
 
@@ -125,11 +126,11 @@ extension MainAndCategoriesViewController: UITableViewDelegate, UITableViewDataS
         var key = [CategoryRecord](items.keys)
         key = key.sorted { $0.name < $1.name }
         let category = key[section]
-        let cards = [CardRecord](items[category] ?? []) //viewModelOfCards.get(field: .category, value: key[section])
+        let cards = [CardRecord](items[category] ?? [])
         guard isSectionOpened(section) else {
-            guard cards.isEmpty else {
-                return 1
-            }
+//            guard cards.isEmpty else {
+//                return 1
+//            }
             return 0
         }
         return cards.count
@@ -149,34 +150,40 @@ extension MainAndCategoriesViewController: UITableViewDelegate, UITableViewDataS
         return cell
     }
 
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        if let header = view as? UITableViewHeaderFooterView {
-            header.backgroundView?.backgroundColor = UIColor.white
-            header.textLabel?.font = UIFont(name: "Avenir", size: 20)
-        }
-    }
+//    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+//        if let header = view as? UITableViewHeaderFooterView {
+//            header.backgroundView?.backgroundColor = UIColor.white
+//            header.textLabel?.font = UIFont(name: "Avenir", size: 20)
+//        }
+//    }
 
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        var key = [CategoryRecord](items.keys)
+//        key = key.sorted { $0.name < $1.name }
+//        let count = items[key[section]]?.count ?? 0
+//        var countStr: String = ""
+//        switch count % 10 {
+//        case 1:
+//            countStr = "карта"
+//        case 2, 3, 4:
+//            countStr = "карты"
+//        case 0, 5, 6, 7, 8, 9:
+//            countStr = "карт"
+//        default:
+//            countStr = ""
+//        }
+//
+//        return key[section].name + " (" + String(count) + " " + countStr + ")"
+//    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "UserHeaderTableViewCell") as? UserHeaderTableViewCell
         var key = [CategoryRecord](items.keys)
         key = key.sorted { $0.name < $1.name }
         let count = items[key[section]]?.count ?? 0
-        var countStr: String = ""
-        switch count % 10 {
-        case 1:
-            countStr = "карта"
-        case 2, 3, 4:
-            countStr = "карты"
-        case 0, 5, 6, 7, 8, 9:
-            countStr = "карт"
-        default:
-            countStr = ""
-        }
-
-        return key[section].name + " (" + String(count) + " " + countStr + ")"
-    }
-
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? UserHeaderTableViewCell
+        header?.setHeader(title: key[section].name, count: count)
+//        header?.titleText.text = key[section].name
+//        header?.countText.text = String(count) + "cards"
         header?.tapHandler = { [unowned self] _ in
             self.changeSectionStatus(section)
         }
