@@ -10,10 +10,9 @@ import Reusable
 import UIKit
 
 class UserHeaderTableViewCell: UITableViewHeaderFooterView, NibReusable {
-    // swiftlint:disable:next private_outlet
-    @IBOutlet var titleText: UILabel!
-    // swiftlint:disable:next private_outlet
-    @IBOutlet var countText: UILabel!
+    @IBOutlet private var titleText: UILabel!
+    @IBOutlet private var countText: UILabel!
+    @IBOutlet private var arrowImage: UIImageView!
 
     var didTapped = false
     // swiftlint:disable:next implicitly_unwrapped_optional
@@ -31,12 +30,16 @@ class UserHeaderTableViewCell: UITableViewHeaderFooterView, NibReusable {
         super.init(coder: aDecoder)
         commonInit()
     }
-    
+
+    func open() {
+        self.arrowImage.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 2))
+    }
+
     func commonInit() {
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapAction)))
         addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(longTapAction)))
     }
-    
+
     @objc private func tapAction() {
         tapHandler?(self)
     }
@@ -46,7 +49,19 @@ class UserHeaderTableViewCell: UITableViewHeaderFooterView, NibReusable {
     }
 
     func setHeader(title: String, count: Int) {
+        var countStr: String = ""
+        switch count % 10 {
+        case 1:
+            countStr = "карта"
+        case 2, 3, 4:
+            countStr = "карты"
+        case 0, 5, 6, 7, 8, 9:
+            countStr = "карт"
+        default:
+            countStr = ""
+        }
+
         titleText.text = title
-        countText.text = String(count)
+        countText.text = String(count) + " " + countStr
     }
 }

@@ -33,6 +33,7 @@ class ViewControllerDetailInformationAboutCard: UIViewController, UITableViewDel
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 100
+        tableView.separatorStyle = .none
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -47,7 +48,6 @@ class ViewControllerDetailInformationAboutCard: UIViewController, UITableViewDel
 
         cardNetworkService.getUrlForCard(url: "http://bolart.ru:3013/cards", card: cardRecord) { url in
             stringForQR = "businessCards://" + url.url
-            print(stringForQR)
             let data = stringForQR.data(using: String.Encoding.utf8)
             guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else { return }
             qrFilter.setValue(data, forKey: "inputMessage")

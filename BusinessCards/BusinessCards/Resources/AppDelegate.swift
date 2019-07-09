@@ -40,7 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationControllerOfMyCards.tabBarItem = UITabBarItem(title: "My Cards", image: UIImage(named: .myCards), tag: 1)
 
         UITabBar.appearance().tintColor = .black
-        UINavigationBar.appearance().tintColor = .black
         let tabbarController = UITabBarController()
         tabbarController.viewControllers = [navigationControllerOfMainScreen, navigationControllerOfMyCards]
         window?.rootViewController = tabbarController
@@ -86,7 +85,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationControllerOfMyCards.tabBarItem = UITabBarItem(title: "Мои", image: UIImage(contentsOfFile: "MyCards"), tag: 1)
 
         UITabBar.appearance().tintColor = .black
-        UINavigationBar.appearance().tintColor = .black
         let tabbarController = UITabBarController()
         tabbarController.viewControllers = [navigationControllerOfMainScreen, navigationControllerOfMyCards]
         window?.rootViewController = tabbarController
