@@ -38,6 +38,7 @@ class MainAndCategoriesViewController: UIViewController {
         self.definesPresentationContext = true
         self.navigationItem.searchController = search
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAlertToAddCategory))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "Settings"), style: .plain, target: self, action: #selector(goToSettings))
         viewModelOfCategories.onCardsChanged = {
             guard let key = $0.last else { return }
             let res = self.viewModelOfCards.get(field: .category, value: key)
@@ -117,6 +118,14 @@ private extension MainAndCategoriesViewController {
             let res = viewModelOfCards.get(field: .category, value: item)
             items[item] = Array(res)
         }
+    }
+
+    @objc private func goToSettings() {
+        let mainStoryboard = UIStoryboard(name: "Settings", bundle: nil)
+        let settingsViewController = mainStoryboard.instantiateViewController(withIdentifier: "Settings")
+            as? SettingsViewController
+        guard let intent = settingsViewController else { return }
+        navigationController?.pushViewController(intent, animated: true)
     }
 }
 
@@ -219,7 +228,6 @@ extension MainAndCategoriesViewController: UITableViewDelegate, UITableViewDataS
         self.tableView.reloadData()
     }
 }
-
 extension MainAndCategoriesViewController: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else {
