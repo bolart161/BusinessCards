@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		68A0DBAFFC370898142A6D0C /* Pods_BusinessCards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66C1CF9D557473FC9464EEF7 /* Pods_BusinessCards.framework */; };
+		94168BB422DC86DF00205B64 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94168BB322DC86CE00205B64 /* Settings.storyboard */; };
+		94168BB622DC870D00205B64 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94168BB522DC870D00205B64 /* SettingsViewController.swift */; };
 		941F3565227AFD7300BEB749 /* CardTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F3562227AFA9000BEB749 /* CardTableCell.swift */; };
 		941F3566227AFD8100BEB749 /* CardTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941F3563227AFA9000BEB749 /* CardTableCell.xib */; };
 		941F3567227AFD8500BEB749 /* UserHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F3564227AFA9000BEB749 /* UserHeaderTableViewCell.swift */; };
@@ -55,6 +57,8 @@
 		37A58B8C0743B5AB58051821 /* Pods-BusinessCards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusinessCards.release.xcconfig"; path = "Target Support Files/Pods-BusinessCards/Pods-BusinessCards.release.xcconfig"; sourceTree = "<group>"; };
 		66C1CF9D557473FC9464EEF7 /* Pods_BusinessCards.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusinessCards.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C08E609D1ED3F42079EA115 /* Pods-BusinessCards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusinessCards.debug.xcconfig"; path = "Target Support Files/Pods-BusinessCards/Pods-BusinessCards.debug.xcconfig"; sourceTree = "<group>"; };
+		94168BB322DC86CE00205B64 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		94168BB522DC870D00205B64 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		941F3562227AFA9000BEB749 /* CardTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTableCell.swift; sourceTree = "<group>"; };
 		941F3563227AFA9000BEB749 /* CardTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardTableCell.xib; sourceTree = "<group>"; };
 		941F3564227AFA9000BEB749 /* UserHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHeaderTableViewCell.swift; sourceTree = "<group>"; };
@@ -124,6 +128,14 @@
 				37A58B8C0743B5AB58051821 /* Pods-BusinessCards.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		94168BB722DC872600205B64 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				94168BB522DC870D00205B64 /* SettingsViewController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		941F3561227AFA9000BEB749 /* Card(Egorov Maxim) */ = {
@@ -297,6 +309,7 @@
 		F78B49AB22650A08007B1873 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				94168BB722DC872600205B64 /* Settings */,
 				AC54F53222875B2E0021B575 /* MyCards */,
 				AC85D34C227B094300B85C5E /* MainAndCategories */,
 				ACD854A122779EC400683591 /* CreateAndEditCard */,
@@ -308,6 +321,7 @@
 		F78B49AC22650A0E007B1873 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				94168BB322DC86CE00205B64 /* Settings.storyboard */,
 				F79474F32278F3E000F05D9B /* CreateAndEditCard.storyboard */,
 				AC2D6F6A226B95F0007184DC /* DetailOfCard.storyboard */,
 				AC46C9C52264FB390049E653 /* Main.storyboard */,
@@ -397,6 +411,7 @@
 				ACEDA92622D2420100F4472D /* DescriptionCell.xib in Resources */,
 				AC46C9C72264FB390049E653 /* Main.storyboard in Resources */,
 				941F3566227AFD8100BEB749 /* CardTableCell.xib in Resources */,
+				94168BB422DC86DF00205B64 /* Settings.storyboard in Resources */,
 				ACAC35F722840E6400D0948E /* UserHeaderTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,7 +465,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${PODS_ROOT}/SwiftLint/swiftlint\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#${PODS_ROOT}/SwiftLint/swiftlint\n";
 		};
 		B16761790B410B6147FE78D9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -488,6 +503,7 @@
 				F79474FC2278F41900F05D9B /* ImageServiceProtocol.swift in Sources */,
 				F79474F82278F3FC00F05D9B /* DateService.swift in Sources */,
 				F7CB803C22703828004B5BAC /* DBServiceProtocol.swift in Sources */,
+				94168BB622DC870D00205B64 /* SettingsViewController.swift in Sources */,
 				ACB0C5392279CA3400463D15 /* QRImageViewController.swift in Sources */,
 				AC047E8E22CFCB7900289B8B /* CardForAPI.swift in Sources */,
 				941F3565227AFD7300BEB749 /* CardTableCell.swift in Sources */,
